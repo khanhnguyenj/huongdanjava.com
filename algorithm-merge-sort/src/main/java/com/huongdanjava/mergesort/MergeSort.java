@@ -13,17 +13,31 @@ public class MergeSort {
 
         int middle = n / 2;
 
-        K[] subArray1 = Arrays.copyOfRange(arrayNeedToSort, 0, middle);
-        doMergeSort(subArray1, comparator);
+        K[] subArrayFirst = Arrays.copyOfRange(arrayNeedToSort, 0, middle);
+        K[] sortedSubArrayFirst = doMergeSort(subArrayFirst, comparator);
 
-        K[] subArray2 = Arrays.copyOfRange(arrayNeedToSort, middle, n);
-        doMergeSort(subArray2, comparator);
+        K[] subArrayLast = Arrays.copyOfRange(arrayNeedToSort, middle, n);
+        K[] sortedSubArraySecond = doMergeSort(subArrayLast, comparator);
 
-        merge(subArray1, subArray2, comparator);
-
-        return arrayNeedToSort;
+        return merge(sortedSubArrayFirst, sortedSubArraySecond, comparator);
     }
 
-    private static <K> void merge(K[] subArray1, K[] subArray2, Comparator<K> comparator) {
+    private static <K> K[]  merge(K[] sortedSubArrayFirst, K[] sortedSubArraySecond, Comparator<K> comparator) {
+        int n = sortedSubArrayFirst.length + sortedSubArraySecond.length;
+        K[] sortedArray = (K[]) new Object[n];
+
+        int i = 0;
+        int j = 0;
+        for (int k = 0; k < n; k++) {
+            if (comparator.compare(sortedSubArrayFirst[i], sortedSubArraySecond[j]) <= 1) {
+                sortedArray[k] = sortedSubArrayFirst[i];
+                i++;
+            } else if (comparator.compare(sortedSubArraySecond[j], sortedSubArrayFirst[i]) <= 1) {
+                sortedArray[k] = sortedSubArraySecond[j];
+                j++;
+            }
+        }
+
+        return sortedArray;
     }
 }
