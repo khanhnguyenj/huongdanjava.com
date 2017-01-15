@@ -1,5 +1,6 @@
 package com.huongdanjava.mergesort;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -24,42 +25,21 @@ public class MergeSort {
 
 	private <K> K[] merge(K[] sortedSubArrayFirst, K[] sortedSubArraySecond, Comparator<K> comparator) {
 		int n = sortedSubArrayFirst.length + sortedSubArraySecond.length;
-		K[] sortedArray = (K[]) new Object[n];
+
+		K[] sortedArray = (K[]) Array.newInstance(sortedSubArrayFirst[0].getClass(), n);
 
 		int i = 0;
 		int j = 0;
 		for (int k = 0; k < n; k++) {
-			if (i < sortedSubArrayFirst.length && comparator.compare(sortedSubArrayFirst[i], sortedSubArraySecond[j]) < 1) {
-				sortedArray[k] = sortedSubArrayFirst[i];
-				if (i < sortedSubArrayFirst.length - 1) {
-					i++;
-				}
-			} else if (j < sortedSubArraySecond.length && comparator.compare(sortedSubArraySecond[j], sortedSubArrayFirst[i]) < 1) {
-				sortedArray[k] = sortedSubArraySecond[j];
-				if (j < sortedSubArraySecond.length - 1) {
-					j++;
-				}
+			if (j == sortedSubArraySecond.length || (i < sortedSubArrayFirst.length
+				&& comparator.compare(sortedSubArrayFirst[i], sortedSubArraySecond[j]) < 1)) {
+				sortedArray[k] = sortedSubArrayFirst[i++];
+			} else {
+				sortedArray[k] = sortedSubArraySecond[j++];
 			}
 		}
 
 		return sortedArray;
 	}
 
-	public static void main(String args[]) {
-		MergeSort mergeSort = new MergeSort();
-		Integer[] array = { 1, 23, 4, 5, 100, 54 };
-
-		Integer[] sortedArray = mergeSort.doMergeSort(array, new Comparator<Integer>() {
-			public int compare(Integer o1, Integer o2) {
-				if (o1 > o2)
-					return 1;
-				else if (o1 == o2)
-					return 0;
-				else
-					return -1;
-			}
-		});
-
-		System.err.println(sortedArray);
-	}
 }
