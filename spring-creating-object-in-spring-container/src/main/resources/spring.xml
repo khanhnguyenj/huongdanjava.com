@@ -1,0 +1,19 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!-- 
+  <bean id="drawing" class="com.huongdanjava.springcreatingobjectinspringcontainer.Drawing">
+    <constructor-arg ref="shape" />
+  </bean>
+   -->
+
+  <bean id="drawing" class="com.huongdanjava.springcreatingobjectinspringcontainer.Drawing">
+    <property name="shape" ref="shape" />
+  </bean>
+  
+  <bean id="shape" class="com.huongdanjava.springcreatingobjectinspringcontainer.Circle">
+  </bean>
+
+</beans>
