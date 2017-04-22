@@ -1,4 +1,4 @@
-package com.huongdanjava.springcreatingobjectinspringcontainer;
+package com.huongdanjava.springxmlconfiguration;
 
 public class Circle implements Shape {
 	public void draw() {

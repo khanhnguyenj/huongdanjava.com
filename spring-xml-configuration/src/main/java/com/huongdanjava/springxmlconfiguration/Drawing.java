@@ -1,4 +1,4 @@
-package com.huongdanjava.springcreatingobjectinspringcontainer;
+package com.huongdanjava.springxmlconfiguration;
 
 public class Drawing {
 	private Shape shape;

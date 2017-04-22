@@ -1,4 +1,4 @@
-package com.huongdanjava.springcreatingobjectinspringcontainer;
+package com.huongdanjava.springxmlconfiguration;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
