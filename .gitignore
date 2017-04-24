@@ -24,3 +24,7 @@
 /spring-constructor-injection/.settings
 /spring-constructor-injection/target
 /spring-constructor-injection/.classpath
+/spring-overloaded-constructor-injection/.project
+/spring-overloaded-constructor-injection/.settings
+/spring-overloaded-constructor-injection/target
+/spring-overloaded-constructor-injection/.classpath
