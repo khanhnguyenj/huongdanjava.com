@@ -20,3 +20,7 @@
 /spring-xml-configuration/.project
 /spring-xml-configuration/.settings
 /spring-xml-configuration/.classpath
+/spring-constructor-injection/.project
+/spring-constructor-injection/.settings
+/spring-constructor-injection/target
+/spring-constructor-injection/.classpath
