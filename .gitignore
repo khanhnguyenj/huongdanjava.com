@@ -28,3 +28,8 @@
 /spring-overloaded-constructor-injection/.settings
 /spring-overloaded-constructor-injection/target
 /spring-overloaded-constructor-injection/.classpath
+/mule-esb-invoke-component/target
+/mule-esb-invoke-component/.classpath
+/mule-esb-invoke-component/.settings
+/mule-esb-invoke-component/.project
+/mule-esb-invoke-component/mule-project.xml
