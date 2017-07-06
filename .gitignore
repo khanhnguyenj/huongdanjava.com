@@ -33,3 +33,7 @@
 /mule-esb-invoke-component/.settings
 /mule-esb-invoke-component/.project
 /mule-esb-invoke-component/mule-project.xml
+/spark-hello-world/.settings
+/spark-hello-world/.project
+/spark-hello-world/.classpath
+/spark-hello-world/target
