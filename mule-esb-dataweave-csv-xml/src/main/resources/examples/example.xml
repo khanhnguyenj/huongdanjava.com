@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<students>
+    <student>
+        <ID>1</ID>
+        <Name>Khanh</Name>
+        <Age>31</Age>
+    </student>
+    <student>
+        <ID>2</ID>
+        <Name>Tan</Name>
+        <Age>25</Age>
+    </student>
+</students>
