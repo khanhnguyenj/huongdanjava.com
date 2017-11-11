@@ -6,13 +6,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Application {
 
 	public static void main(String[] args) {
-		// Gọi khung chứa của Spring
+		// Call Spring container
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 
-		// Yêu cầu lấy đối tượng SayHello
+		// Request to get SayHello object
 		SayHello sayHello = (SayHello) context.getBean("hello");
 
-		// Sau khi lấy xong thì bạn có thể làm những gì bạn muốn
+		// Call any methods in SayHello object
 		sayHello.say();
 	}
 }
