@@ -3,6 +3,7 @@
   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
   <bean id="student" class="com.huongdanjava.springoverloadedconstructorinjection.Student">
-    <constructor-arg type="int" value="30" />
+    <constructor-arg value="Khanh" />
+    <constructor-arg value="30" />
   </bean>
 </beans>
