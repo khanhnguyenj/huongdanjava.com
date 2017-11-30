@@ -1,0 +1,6 @@
+<project basedir="." default="copy-file">
+  
+  <target name="copy-file">
+    <copy file="example.txt" todir="src" />
+  </target>
+</project>
