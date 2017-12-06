@@ -1,13 +1,26 @@
 package com.huongdanjava.lombok;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+import java.util.Date;
+
+@NoArgsConstructor
+@AllArgsConstructor
 public class Student {
 
-    private String firstName;
-    private String middleName;
-    private String lastName;
-    private String country;
+    private String name;
+
+    @Getter
+    @Setter
+    private String code;
+
+    private Date dateOfBirth;
+
+    public Student(String name) {
+        this.name = name;
+    }
 
 }

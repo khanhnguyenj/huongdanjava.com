@@ -1,0 +1,6 @@
+<st:student xmlns:st="http://huongdanjava.com/student/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://huongdanjava.com/student/ student.xsd ">
+    <id>1</id>
+    <name>Khanh</name>
+    <address>Viet Nam allllllllllllllllllllllllllllllll</address>
+    <a>sss</a>
+</st:student>
