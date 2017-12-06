@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="clazzA" class="com.huongdanjava.springinheritance.Clazz" parent="generalClazz">
+	</bean>
+
+	<bean id="clazzB" class="com.huongdanjava.springinheritance.Clazz" parent="generalClazz">
+	</bean>
+
+	<bean id="generalClazz" class="com.huongdanjava.springinheritance.Clazz" abstract="true">
+		<property name="schoolName" value="Tam Quan Nam" />
+	</bean>
+
+</beans>
