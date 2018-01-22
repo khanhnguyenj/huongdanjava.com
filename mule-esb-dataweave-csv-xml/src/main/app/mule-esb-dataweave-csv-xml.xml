@@ -17,16 +17,14 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
 %output application/xml
 ---
 {
-	students : {
-		(
-			payload map ((p) -> {
-				student: {
-					id: p.ID as :number,
-					name: p.Name,
-					age: p.Age as :number
-				}
-			})
-		)
+	students: {
+		(payload map ((payload01 , indexOfPayload01) -> {
+			student: {
+				ID: payload01.ID as :number,
+				Name: payload01.Name,
+				Age: payload01.Age as :number
+			}
+		}))
 	}
 }]]></dw:set-payload>
         </dw:transform-message>
