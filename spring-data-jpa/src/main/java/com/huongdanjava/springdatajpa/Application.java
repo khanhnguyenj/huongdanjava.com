@@ -10,8 +10,8 @@ public class Application {
 
         HelloRepository helloRepository = (HelloRepository) ac.getBean("helloRepository");
 
-        Student student = helloRepository.findById(new Long(2)).get();
+        Student student = helloRepository.findByName("Phong");
 
-        System.out.println(student.getName());
+        System.out.println(student.getId());
     }
 }
