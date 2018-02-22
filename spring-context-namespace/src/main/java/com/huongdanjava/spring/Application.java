@@ -1,4 +1,4 @@
-package com.huongdanjava.springcontextnamespace;
+package com.huongdanjava.spring;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
