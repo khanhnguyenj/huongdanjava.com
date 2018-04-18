@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.huongdanjava</groupId>
 	<artifactId>spark-hello-world</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${version}</version>
 
 	<dependencies>
 		<dependency>
