@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.huongdanjava</groupId>
 	<artifactId>spark-hello-world</artifactId>
-	<version>${version}</version>
+	<version>0.0.1-SNAPSHOT</version>
 
 	<dependencies>
 		<dependency>
@@ -14,6 +14,8 @@
 	</dependencies>
 
 	<build>
+		<finalName>${project.artifactId}-${version}</finalName>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
