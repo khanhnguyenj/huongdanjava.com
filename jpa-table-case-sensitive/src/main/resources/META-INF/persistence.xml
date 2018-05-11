@@ -16,6 +16,7 @@
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.use_sql_comments" value="true" />
             <property name="hibernate.id.new_generator_mappings" value="false" />
+            <property name="hibernate.physical_naming_strategy" value="com.huongdanjava.jpa.PhysicalNamingStrategyImpl" />
         </properties>
     </persistence-unit>
 </persistence>
