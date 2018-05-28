@@ -1,0 +1,40 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg ref="mongoClient" />
+		<constructor-arg value="mongodb_example" />
+	</bean>
+	
+	<bean id="mongoClient" class="com.mongodb.MongoClient" />
+	
+<!-- 	<bean id="mongoClient" class="com.mongodb.MongoClient"> -->
+<!-- 		<constructor-arg value="10.29.19.22" /> -->
+<!-- 		<constructor-arg value="27017" /> -->
+<!-- 	</bean> -->
+	
+<!-- 	<bean id="mongoClient" class="com.mongodb.MongoClient"> -->
+<!-- 		<constructor-arg ref="mongoServerAddress" /> -->
+<!-- 		<constructor-arg ref="mongoCredentialList" /> -->
+<!-- 	</bean> -->
+	
+<!-- 	<bean id="mongoServerAddress" class="com.mongodb.ServerAddress"> -->
+<!--     	<constructor-arg value="localhost" /> -->
+<!-- 		<constructor-arg value="27017" /> -->
+<!--     </bean> -->
+    
+<!--     <bean id="mongoCredential" class="com.mongodb.MongoCredential"> -->
+<!--      	<constructor-arg value="khanh" /> -->
+<!-- 		<constructor-arg value="mongodb_example" /> -->
+<!-- 		<constructor-arg value="abc123" /> -->
+<!--    	</bean> -->
+	
+<!-- 	<bean id="mongoCredentialList" class="java.util.ArrayList"> -->
+<!--       	<constructor-arg> -->
+<!--           	<list> -->
+<!--               	<ref bean="mongoCredential" /> -->
+<!--           	</list> -->
+<!--       	</constructor-arg> -->
+<!-- 	</bean> -->
+</beans>
