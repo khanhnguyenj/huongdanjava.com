@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:jpa="http://www.mulesoft.org/schema/mule/jpa" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/jpa http://www.mulesoft.org/schema/mule/jpa/current/mule-jpa.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd">
+	<spring:beans>
+        <spring:import resource="classpath:spring.xml" />
+    </spring:beans>
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" basePath="/jpa" doc:name="HTTP Listener Configuration"/>
+    <jpa:config name="Java_Persistence_API" entityManagerFactory-ref="entityManagerFactory" doc:name="Java Persistence API"/>
+    
+    <flow name="mule-esb-jpaFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/student" doc:name="HTTP" allowedMethods="GET"/>
+        <jpa:query config-ref="Java_Persistence_API" statement="FROM Student student WHERE student.name = :name" queryParameters-ref="#[message.inboundProperties.'http.query.params']" doc:name="Java Persistence API"/>
+        <json:object-to-json-transformer doc:name="Object to JSON"/>
+    </flow>
+</mule>
