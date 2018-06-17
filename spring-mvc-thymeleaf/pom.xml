@@ -3,14 +3,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.huongdanjava</groupId>
-	<artifactId>thymeleaf</artifactId>
+	<artifactId>spring-mvc-thymeleaf</artifactId>
 	<name>spring-mvc-thymeleaf</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
-		<java-version>1.9</java-version>
-		<org.springframework-version>5.0.0.RELEASE</org.springframework-version>
-		<org.aspectj-version>1.8.11</org.aspectj-version>
+		<java-version>1.8</java-version>
+		<org.springframework-version>5.0.7.RELEASE</org.springframework-version>
+		<org.aspectj-version>1.9.1</org.aspectj-version>
 		<org.slf4j-version>1.7.25</org.slf4j-version>
 	</properties>
 	<dependencies>
@@ -120,13 +120,13 @@
 		<!-- Thymeleaf -->
 		<dependency>
 		    <groupId>org.thymeleaf</groupId>
-		    <artifactId>thymeleaf-spring4</artifactId>
-		    <version>3.0.7.RELEASE</version>
+		    <artifactId>thymeleaf-spring5</artifactId>
+		    <version>3.0.9.RELEASE</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.thymeleaf</groupId>
 		    <artifactId>thymeleaf</artifactId>
-		    <version>3.0.7.RELEASE</version>
+		    <version>3.0.9.RELEASE</version>
 		</dependency>
 	</dependencies>
     <build>
@@ -168,7 +168,7 @@
             <plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
-				<version>9.4.7.v20170914</version>
+				<version>9.4.11.v20180605</version>
 			</plugin>
         </plugins>
     </build>
