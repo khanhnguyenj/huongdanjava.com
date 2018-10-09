@@ -1,15 +1,15 @@
 package com.huongdanjava.mavensurefireplugin;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 public class CalculationTest {
 
 	private Calculation calculation;
 
-	@BeforeAll
+	@Before
 	public void init() {
 		calculation = new Calculation();
 	}

@@ -8,10 +8,10 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.3.1</version>
-			<scope>test</scope>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <version>4.12</version>
+		    <scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -26,15 +26,15 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-
+			
 			<plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.0</version>
-				<configuration>
-					<excludes>
-						<exclude>CalculationTest.java</exclude>
-					</excludes>
-				</configuration>
+			    <artifactId>maven-surefire-plugin</artifactId>
+			    <version>2.22.0</version>
+			    <configuration>
+			        <excludes>
+			            <exclude>CalculationTest.java</exclude>
+			        </excludes>
+			    </configuration>
 			</plugin>
 		</plugins>
 	</build>
