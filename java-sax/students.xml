@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<students>
+	<student n0='1'>
+		<name>John</name>
+		<code>12345</code>
+		<age>19</age>
+	</student>
+	<student n0='2'>
+		<name>Marry</name>
+		<code>23456</code>
+		<age>24</age>
+	</student>
+</students>
