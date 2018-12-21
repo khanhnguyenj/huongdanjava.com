@@ -1,0 +1,20 @@
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd 
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<context:annotation-config />
+
+	<bean id="room" class="com.huongdanjava.springqualifier.Room">
+	</bean>
+
+	<bean id="table1" class="com.huongdanjava.springqualifier.Table">
+		<property name="code" value="123456" />
+	</bean>
+
+	<bean id="table2" class="com.huongdanjava.springqualifier.Table">
+		<property name="code" value="789012" />
+	</bean>
+
+</beans>
