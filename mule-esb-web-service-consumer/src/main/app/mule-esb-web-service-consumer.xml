@@ -11,18 +11,7 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
     <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8082" doc:name="HTTP Listener Configuration"/>
     <ws:consumer-config name="Web_Service_Consumer" wsdlLocation="http://localhost:8081/hello?wsdl" service="HelloWorldServiceService" port="HelloWorldServicePort" serviceAddress="http://localhost:8081/hello" doc:name="Web Service Consumer"/>
     <flow name="mule-esb-web-service-consumerFlow">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="/hello" doc:name="HTTP"/>
-        <dw:transform-message doc:name="Transform Message">
-            <dw:set-payload><![CDATA[%dw 1.0
-%output application/xml
-%namespace hdj http://muleesbcxfsoapexpose.huongdanjava.com/
----
-{
-	hdj#hello: {
-		arg0: inboundProperties."http.query.params".name
-	}
-}]]></dw:set-payload>
-        </dw:transform-message>
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/hello" doc:name="HTTP" allowedMethods="POST"/>
         <ws:consumer config-ref="Web_Service_Consumer" doc:name="Web Service Consumer" operation="hello"/>
     </flow>
 </mule>
