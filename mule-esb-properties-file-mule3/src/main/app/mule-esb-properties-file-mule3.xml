@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" 
+	xmlns:huong-dan-java-logger-component="http://www.mulesoft.org/schema/mule/huong-dan-java-logger-component" 
+	xmlns="http://www.mulesoft.org/schema/mule/core" 
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/huong-dan-java-logger-component http://www.mulesoft.org/schema/mule/huong-dan-java-logger-component/current/mule-huong-dan-java-logger-component.xsd">
+	<context:property-placeholder location="classpath:application.properties" ignore-resource-not-found="true" />
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <huong-dan-java-logger-component:config name="Huong_Dan_Java_Logger__Configuration" category="com.huongdanjava" doc:name="Huong Dan Java Logger: Configuration"/>
+    <flow name="mule-esb-properties-file-mule3Flow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/properties-file" allowedMethods="GET" doc:name="HTTP"/>
+        <huong-dan-java-logger-component:log config-ref="Huong_Dan_Java_Logger__Configuration" message="Hello ${author.name}" doc:name="Huong Dan Java Logger"/>
+    </flow>
+</mule>
