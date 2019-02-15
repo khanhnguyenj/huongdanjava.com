@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="0b306228-563f-4c7d-bfad-ecddeefe58de" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="219b4df2-9618-41e0-a276-ba10a4d32895" file="application.properties" />
+	<flow name="mule-esb-properties-file-mule4Flow" doc:id="695e105a-0c13-49e9-a760-426f11ff2a18" >
+		<http:listener doc:name="Listener" doc:id="5fc8b988-0b8d-4d19-b40a-9187ebf526f8" config-ref="HTTP_Listener_config" path="/properties-file"/>
+		<logger level="INFO" doc:name="Logger" doc:id="28bb6f13-0c18-4424-b3c8-15e1841a8bac" message="Hello ${author.name}" category="com.huongdanjava"/>
+	</flow>
+</mule>
