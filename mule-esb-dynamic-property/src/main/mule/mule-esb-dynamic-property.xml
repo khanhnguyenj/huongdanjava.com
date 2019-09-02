@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="8768886e-6557-4c88-b4dc-26383c3ec483" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="a60c0948-c635-4a63-a6c1-e1ae689ac0ba" file="application.properties" />
+	<flow name="mule-esb-dynamic-propertyFlow" doc:id="e22fb6dd-e62a-4f39-98d1-7cc5832e3501" >
+		<http:listener doc:name="Listener" doc:id="777f7ebd-3919-4068-9ad8-00f62cd03483" config-ref="HTTP_Listener_config" path="/test"/>
+		<set-variable value="#[attributes.queryParams['name']]" doc:name="Set Variable" doc:id="a29d5341-4b7c-4f9a-8400-87021da072d2" variableName="studentName"/>
+		<logger level="INFO" doc:name="Logger" doc:id="3cdf6991-29be-4a46-b65b-2ea66098400d" message="#[p(vars.studentName ++ '.name')]"/>
+	</flow>
+</mule>
