@@ -1,9 +1,10 @@
 package com.huongdanjava.projectreactor;
 
 import org.reactivestreams.Subscription;
+
 import reactor.core.publisher.BaseSubscriber;
 
-public class Consumer<T> extends BaseSubscriber {
+public class Consumer extends BaseSubscriber<String> {
 
     @Override
     protected void hookOnSubscribe(Subscription subscription) {
@@ -12,7 +13,7 @@ public class Consumer<T> extends BaseSubscriber {
     }
 
     @Override
-    protected void hookOnNext(Object value) {
+    protected void hookOnNext(String value) {
         System.out.println("Consumer: hookOnNext " + value);
         request(1);
     }
