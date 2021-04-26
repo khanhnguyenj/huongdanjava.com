@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.huongdanjava</groupId>
-	<artifactId>springmvc</artifactId>
+	<artifactId>spring-mvc-liquibase</artifactId>
 	<name>spring-mvc-example</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
@@ -33,6 +33,17 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.20</version>
 		</dependency>
 
 		<!-- AspectJ -->
@@ -111,6 +122,12 @@
 			<version>1.2</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>4.3.4</version>
+		</dependency>
+
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -159,11 +176,8 @@
 				<version>9.4.40.v20210413</version>
 				<configuration>
 					<webApp>
-						<contextPath>/springmvc</contextPath>
+						<contextPath>/springmvc-liquibase</contextPath>
 					</webApp>
-					<httpConnector>
-						<port>8585</port>
-					</httpConnector>
 				</configuration>
 			</plugin>
 		</plugins>
