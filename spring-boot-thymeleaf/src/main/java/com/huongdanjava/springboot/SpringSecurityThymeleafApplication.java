@@ -1,12 +1,13 @@
-package com.huongdanjava.springbootthymeleaf;
+package com.huongdanjava.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootThymeleafApplication {
+public class SpringSecurityThymeleafApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootThymeleafApplication.class, args);
+		SpringApplication.run(SpringSecurityThymeleafApplication.class, args);
 	}
+
 }

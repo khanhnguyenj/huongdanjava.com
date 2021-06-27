@@ -1,4 +1,4 @@
-package com.huongdanjava.springbootthymeleaf;
+package com.huongdanjava.springboot;
 
 import java.text.DateFormat;
 import java.util.Date;
