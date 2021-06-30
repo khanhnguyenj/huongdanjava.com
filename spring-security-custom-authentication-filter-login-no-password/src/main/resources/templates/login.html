@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Spring Security Example</title>
+<link href="/webjars/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<h2 class="form-signin-heading">Welcome to Huong Dan Java, please login</h2>
+		<div th:if="${param.error}" class="alert alert-danger">    
+        	Invalid username and token.
+        </div>
+        <div th:if="${param.logout}" class="alert alert-success"> 
+            You have been logged out.
+        </div>
+		<form class="form-signin" method="POST" th:action="@{/login-token}">
+			<p>
+				<label for="username" class="sr-only">Username</label> 
+				<input type="text" id="username" name="username" class="form-control"
+					placeholder="Username" required autofocus>
+			</p>
+			<p>
+				<label for="Token" class="sr-only">Token</label> 
+				<input type="text" id="token" name="token" class="form-control"
+					placeholder="Token" required>
+			</p>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+		</form>
+	</div>
+</body>
+</html>
