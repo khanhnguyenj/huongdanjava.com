@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  postgresql: 
+    image: postgres:13.3
+    container_name: postgres
+    restart: on-failure:5
+    environment:
+      POSTGRES_PASSWORD: "123456"
+      POSTGRES_USER: "khanh"
+      POSTGRES_DB: "test"
+    volumes:
+      - /Users/khanh/data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - huongdanjava
+
+  spring_boot_docker_compose:
+    image: spring-boot-docker-compose
+    container_name: spring_boot_docker_compose
+    depends_on:
+      - postgresql
+    environment:
+      DATABASE_USERNAME: "khanh"
+      DATABASE_PASSWORD: "123456"
+      DATABASE_HOST: "postgresql"
+      DATABASE_NAME: "test"
+      DATABASE_PORT: 5432
+    ports:
+      - 8080:8080
+    networks:
+      - huongdanjava
+
+networks:
+  huongdanjava:
+    driver: bridge
