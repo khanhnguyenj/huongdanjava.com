@@ -51,7 +51,16 @@ public class AuthorizationServerConfiguration {
         .build();
     // @formatter:on
 
-    return new InMemoryRegisteredClientRepository(registeredClient);
+    // @formatter:off
+    RegisteredClient registeredClient1 = RegisteredClient.withId(UUID.randomUUID().toString())
+        .clientId("huongdanjava1")
+        .clientSecret("{noop}123")
+        .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
+        .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+        .build();
+    // @formatter:on
+
+    return new InMemoryRegisteredClientRepository(registeredClient, registeredClient1);
   }
 
   @Bean

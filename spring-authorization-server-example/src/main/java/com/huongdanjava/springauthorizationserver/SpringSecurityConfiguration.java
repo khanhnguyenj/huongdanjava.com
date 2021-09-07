@@ -13,26 +13,29 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SpringSecurityConfiguration {
 
-    @Bean
-    SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        http
-            .authorizeRequests(authorizeRequests ->
-                authorizeRequests.anyRequest().authenticated()
-            )
-            .formLogin(Customizer.withDefaults());
+  @Bean
+  SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+    // @formatter:off
+    http
+        .authorizeRequests(authorizeRequests ->
+            authorizeRequests.anyRequest().authenticated()
+        )
+        .formLogin(Customizer.withDefaults());
+    // @formatter:on
 
-        return http.build();
-    }
+    return http.build();
+  }
 
-    @Bean
-    public UserDetailsService users() {
-        UserDetails user = User.withDefaultPasswordEncoder()
-            .username("admin")
-            .password("password")
-            .roles("ADMIN")
-            .build();
+  @Bean
+  public UserDetailsService users() {
+    // @formatter:off
+    UserDetails user = User.withDefaultPasswordEncoder()
+        .username("admin")
+        .password("password")
+        .roles("ADMIN").build();
+    // @formatter:on
 
-        return new InMemoryUserDetailsManager(user);
-    }
+    return new InMemoryUserDetailsManager(user);
+  }
 
 }
