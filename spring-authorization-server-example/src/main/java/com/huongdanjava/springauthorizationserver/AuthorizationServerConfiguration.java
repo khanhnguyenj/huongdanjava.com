@@ -5,6 +5,7 @@ import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
+import java.time.Duration;
 import java.util.UUID;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,7 @@ import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
+import org.springframework.security.oauth2.server.authorization.config.TokenSettings;
 import org.springframework.security.web.SecurityFilterChain;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
@@ -57,6 +59,7 @@ public class AuthorizationServerConfiguration {
         .clientSecret("{noop}123")
         .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
         .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+        .tokenSettings(tokenSettings())
         .build();
     // @formatter:on
 
@@ -96,4 +99,12 @@ public class AuthorizationServerConfiguration {
     return keyPairGenerator.generateKeyPair();
   }
 
+  @Bean
+  public TokenSettings tokenSettings() {
+    //@formatter:off
+    return TokenSettings.builder()
+        .accessTokenTimeToLive(Duration.ofMinutes(30L))
+        .build();
+    // @formatter:on
+  }
 }
