@@ -16,9 +16,9 @@ services:
     networks:
       - huongdanjava
 
-  spring_boot_docker_compose:
+  spring_boot_docker_compose_1:
     image: spring-boot-docker-compose
-    container_name: spring_boot_docker_compose
+    container_name: spring_boot_docker_compose_1
     depends_on:
       - postgresql
     environment:
@@ -28,9 +28,46 @@ services:
       DATABASE_NAME: "test"
       DATABASE_PORT: 5432
     ports:
-      - 8080:8080
+      - 8081:8080
     networks:
       - huongdanjava
+      
+  spring_boot_docker_compose_2:
+    image: spring-boot-docker-compose
+    container_name: spring_boot_docker_compose_2
+    depends_on:
+      - postgresql
+    environment:
+      DATABASE_USERNAME: "khanh"
+      DATABASE_PASSWORD: "123456"
+      DATABASE_HOST: "postgresql"
+      DATABASE_NAME: "test"
+      DATABASE_PORT: 5432
+    ports:
+      - 8082:8080
+    networks:
+      - huongdanjava
+     
+  spring_boot_docker_compose_3:
+    image: spring-boot-docker-compose
+    container_name: spring_boot_docker_compose_3
+    depends_on:
+      - postgresql
+    environment:
+      DATABASE_USERNAME: "khanh"
+      DATABASE_PASSWORD: "123456"
+      DATABASE_HOST: "postgresql"
+      DATABASE_NAME: "test"
+      DATABASE_PORT: 5432
+    ports:
+      - 8083:8080
+    networks:
+      - huongdanjava
+      
+  nginx:
+    image: nginx:0.0.1
+    ports:
+      - 80:80
 
 networks:
   huongdanjava:
