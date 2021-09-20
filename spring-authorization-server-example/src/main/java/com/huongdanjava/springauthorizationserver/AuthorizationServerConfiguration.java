@@ -21,6 +21,7 @@ import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
+import org.springframework.security.oauth2.server.authorization.config.ProviderSettings;
 import org.springframework.security.oauth2.server.authorization.config.TokenSettings;
 import org.springframework.security.web.SecurityFilterChain;
 import com.nimbusds.jose.jwk.JWKSet;
@@ -51,9 +52,7 @@ public class AuthorizationServerConfiguration {
         .redirectUri("https://oidcdebugger.com/debug")
         .scope(OidcScopes.OPENID)
         .build();
-    // @formatter:on
 
-    // @formatter:off
     RegisteredClient registeredClient1 = RegisteredClient.withId(UUID.randomUUID().toString())
         .clientId("huongdanjava1")
         .clientSecret("{noop}123")
@@ -97,6 +96,15 @@ public class AuthorizationServerConfiguration {
     keyPairGenerator.initialize(2048);
 
     return keyPairGenerator.generateKeyPair();
+  }
+
+  @Bean
+  public ProviderSettings providerSettings() {
+    // @formatter:off
+    return ProviderSettings.builder()
+        .issuer("http://localhost:8080")
+        .build();
+    // @formatter:on
   }
 
   @Bean
