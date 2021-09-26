@@ -52,7 +52,9 @@ public class AuthorizationServerConfiguration {
         .redirectUri("https://oidcdebugger.com/debug")
         .scope(OidcScopes.OPENID)
         .build();
+    // @formatter:on
 
+    // @formatter:off
     RegisteredClient registeredClient1 = RegisteredClient.withId(UUID.randomUUID().toString())
         .clientId("huongdanjava1")
         .clientSecret("{noop}123")
