@@ -1,8 +1,14 @@
 package com.huongdanjava.springauthorizationserver;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
+import java.security.cert.CertificateException;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.time.Duration;
@@ -25,6 +31,7 @@ import org.springframework.security.oauth2.server.authorization.config.ProviderS
 import org.springframework.security.oauth2.server.authorization.config.TokenSettings;
 import org.springframework.security.web.SecurityFilterChain;
 import com.nimbusds.jose.jwk.JWKSet;
+import com.nimbusds.jose.jwk.PasswordLookup;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
@@ -74,9 +81,10 @@ public class AuthorizationServerConfiguration {
   }
 
   @Bean
-  public JWKSource<SecurityContext> jwkSource() throws NoSuchAlgorithmException {
-    RSAKey rsaKey = generateRsa();
-    JWKSet jwkSet = new JWKSet(rsaKey);
+  public JWKSource<SecurityContext> jwkSource() throws NoSuchAlgorithmException, KeyStoreException,
+      CertificateException, FileNotFoundException, IOException {
+    // RSAKey rsaKey = generateRsa();
+    JWKSet jwkSet = buildJWKSet();
 
     return (jwkSelector, securityContext) -> jwkSelector.select(jwkSet);
   }
@@ -117,5 +125,21 @@ public class AuthorizationServerConfiguration {
         .accessTokenTimeToLive(Duration.ofMinutes(30L))
         .build();
     // @formatter:on
+  }
+
+  private JWKSet buildJWKSet() throws KeyStoreException, NoSuchAlgorithmException,
+      CertificateException, FileNotFoundException, IOException {
+    KeyStore keyStore = KeyStore.getInstance("pkcs12");
+    try (FileInputStream fis = new FileInputStream("src/main/resources/huongdanjava.pfx")) {
+      keyStore.load(fis, "123456".toCharArray());
+
+      return JWKSet.load(keyStore, new PasswordLookup() {
+
+        @Override
+        public char[] lookupPassword(String name) {
+          return "123456".toCharArray();
+        }
+      });
+    }
   }
 }
