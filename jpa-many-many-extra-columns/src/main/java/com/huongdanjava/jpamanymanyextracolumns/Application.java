@@ -7,19 +7,20 @@ import javax.persistence.Persistence;
 
 public class Application {
 
-    public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpaexample");
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction transaction = em.getTransaction();
+  public static void main(String[] args) {
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpaexample");
+    EntityManager em = emf.createEntityManager();
+    EntityTransaction transaction = em.getTransaction();
 
-        Project project  = em.find(Project.class, 1);
+    Project project = em.find(Project.class, 1);
 
-        System.out.println("Project: " + project.getName());
-        project.getDevelopers().forEach(
-                (developer) -> System.out.println("Developer: "+ developer.getDeveloper().getName() + " | Task: " + developer.getTask())
-        );
+    System.out.println("Project: " + project.getName());
+    project.getDevelopers().forEach(
+        (developer) -> System.out.println(
+            "Developer: " + developer.getDeveloper().getName() + " | Task: " + developer.getTask())
+    );
 
-        em.close();
-        emf.close();
-    }
+    em.close();
+    emf.close();
+  }
 }
