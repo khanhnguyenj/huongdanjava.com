@@ -1,0 +1,8 @@
+<server description="Open Liberty server">
+  <featureManager>
+    <feature>jakartaee-9.1</feature>
+  </featureManager>
+  <webApplication location="jakartaee-liberty.war" contextRoot="/"/>
+  <httpEndpoint host="*" httpPort="${default.http.port}" httpsPort="${default.https.port}"
+    id="defaultHttpEndpoint"/>
+</server>
