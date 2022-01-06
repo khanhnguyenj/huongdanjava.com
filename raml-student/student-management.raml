@@ -1,0 +1,93 @@
+#%RAML 1.0
+baseUri: https://localhost:8081/api
+title: Student Information Management System
+version: 1.0
+
+types: 
+  Student: !include data-types/objects/student.raml
+  Class: !include data-types/objects/class.raml
+  ClassStudent: !include data-types/objects/class-class-student.raml
+
+/students:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: Student[]
+            example: !include examples/students.json
+              
+  post:
+    body:
+      application/json:
+        type: Student
+        example: !include examples/post-student.json
+  /{id}:
+    uriParameters:
+      id:
+        description: Id of the Student
+        type: string
+        example: "1"
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/student.json
+    put:
+      body:
+        application/json:
+          type: Student
+          example: !include examples/student.json
+    delete:
+      responses:
+        200:
+          body:
+            application/json:
+              example: { "message": "Student deleted!" }
+
+/classes:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: Class[]
+            example: !include examples/classes.json
+  post:
+    body:
+      application/json:
+        type: Student
+        example: !include examples/post-class.json
+  /{id}:
+    uriParameters:
+      id:
+        description: Id of the Class
+        type: string
+        example: "1"
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/class.json
+    put:
+      body:
+        application/json:
+          type: Student
+          example: !include examples/class.json
+    delete:
+      responses:
+        200:
+          body:
+            application/json:
+              example: { "message": "Class deleted!" }
+  /students:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: ClassStudent
+              example: !include examples/class-student.json
+                
