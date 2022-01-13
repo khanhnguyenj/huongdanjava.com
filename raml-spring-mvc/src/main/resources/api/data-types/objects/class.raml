@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+displayName: Clazz
+
+properties: 
+  id?:
+    type: integer
+    example: 1
+  name:
+    type: string
+    example: "A"
+  students?:
+    type: array
+    items: !include student.raml

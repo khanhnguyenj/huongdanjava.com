@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.6.2</version>
+    <relativePath /> <!-- lookup parent from repository -->
+  </parent>
+  <groupId>com.huongdanjava</groupId>
+  <artifactId>raml-spring-mvc</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>raml-spring-mvc</name>
+  <description>Demo project for RAML and Spring MVC</description>
+  <properties>
+    <java.version>11</java.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.6</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>com.phoenixnap.oss</groupId>
+        <artifactId>springmvc-raml-plugin</artifactId>
+        <version>2.0.5</version>
+        <configuration>
+          <ramlPath>src/main/resources/api/student-management.raml</ramlPath>
+          <outputRelativePath>src/main/java</outputRelativePath>
+          <basePackage>com.huongdanjava.ramlspringmvc.web</basePackage>
+          <baseUri>/api</baseUri>
+          <rule>com.phoenixnap.oss.ramlplugin.raml2code.rules.Spring4ControllerInterfaceRule</rule>
+        </configuration>
+        <executions>
+          <execution>
+            <id>generate-springmvc-endpoints</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>generate-springmvc-endpoints</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
