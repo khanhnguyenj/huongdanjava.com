@@ -97,7 +97,7 @@ public class AuthorizationServerConfiguration {
     // @formatter:off
     RegisteredClient registeredClient = RegisteredClient.withId("e4a295f7-0a5f-4cbc-bcd3-d870243d1b05")
         .clientId("huongdanjava1")
-        .clientSecret("123")
+        .clientSecret("{noop}123")
         .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
         .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
         .tokenSettings(tokenSettings())
