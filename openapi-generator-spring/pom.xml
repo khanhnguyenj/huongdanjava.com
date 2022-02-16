@@ -47,10 +47,11 @@
               <goal>generate</goal>
             </goals>
             <configuration>
-              <inputSpec>${project.basedir}/src/main/resources/api/student.yml</inputSpec>
+              <inputSpec>${project.basedir}/src/main/resources/api/student.yaml</inputSpec>
               <generatorName>spring</generatorName>
-              <apiPackage>com.huongdanjava.openapispring</apiPackage>
+              <apiPackage>com.huongdanjava.openapispring.web</apiPackage>
               <output>.</output>
+              <skipOverwrite>true</skipOverwrite>
               <configOptions>
                 <delegatePattern>true</delegatePattern>
               </configOptions>
