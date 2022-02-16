@@ -1,0 +1,49 @@
+openapi: 3.0.3
+info:
+  title: Student Information Management System
+  version: "1.0"
+servers:
+  - url: https://localhost:8081/api
+paths:
+  /students:
+    get:
+      summary: Get all students
+      responses:
+        200:
+          description: Get all students successfully
+          content:
+            application/json:
+              example: [{ "ID": 1, "code": "001", "name": "Khanh" }, { "ID": 2, "code": "002", "name": "Quan" }]
+  /students/{ID}:
+    get:
+      operationId: getStudentById
+      summary: Get a student by ID
+      parameters:
+        - name: ID
+          in: path
+          description: "ID of the Student"
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Get student information successfully
+          content:
+            application/json:
+              example: { "ID": 1, "code": "001", "name": "Khanh" }
+    delete:
+      operationId: deleteStudentById
+      summary: Delete a student by ID
+      parameters:
+        - name: ID
+          in: path
+          description: "ID of the Student"
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Delete student information successfully
+          content:
+            application/json:
+              example: { "message": "Student deleted!"}
