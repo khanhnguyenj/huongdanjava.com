@@ -16,7 +16,7 @@
   <description>Demo project for OpenAPI Specification and Spring Boot</description>
   <properties>
     <java.version>11</java.version>
-    
+
     <springfox-version>3.0.0</springfox-version>
   </properties>
   <dependencies>
@@ -29,6 +29,22 @@
       <groupId>io.springfox</groupId>
       <artifactId>springfox-oas</artifactId>
       <version>${springfox-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger-ui</artifactId>
+      <version>${springfox-version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-yaml</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.openapitools</groupId>
+      <artifactId>jackson-databind-nullable</artifactId>
+      <version>0.2.2</version>
     </dependency>
 
     <dependency>
