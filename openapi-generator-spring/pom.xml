@@ -17,7 +17,7 @@
   <properties>
     <java.version>11</java.version>
 
-    <springfox-version>3.0.0</springfox-version>
+    <springdoc.version>1.6.6</springdoc.version>
   </properties>
   <dependencies>
     <dependency>
@@ -26,14 +26,9 @@
     </dependency>
 
     <dependency>
-      <groupId>io.springfox</groupId>
-      <artifactId>springfox-oas</artifactId>
-      <version>${springfox-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>io.springfox</groupId>
-      <artifactId>springfox-swagger-ui</artifactId>
-      <version>${springfox-version}</version>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-ui</artifactId>
+      <version>${springdoc.version}</version>
     </dependency>
 
     <dependency>
@@ -79,6 +74,7 @@
               <inputSpec>${project.basedir}/src/main/resources/api/student.yaml</inputSpec>
               <generatorName>spring</generatorName>
               <apiPackage>com.huongdanjava.openapispring.web</apiPackage>
+              <modelPackage>com.huongdanjava.openapispring.dto</modelPackage>
               <output>.</output>
               <configOptions>
                 <delegatePattern>true</delegatePattern>
