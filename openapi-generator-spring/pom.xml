@@ -16,8 +16,6 @@
   <description>Demo project for OpenAPI Specification and Spring Boot</description>
   <properties>
     <java.version>11</java.version>
-
-    <springdoc.version>1.6.6</springdoc.version>
   </properties>
   <dependencies>
     <dependency>
@@ -28,7 +26,7 @@
     <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-ui</artifactId>
-      <version>${springdoc.version}</version>
+      <version>1.6.6</version>
     </dependency>
 
     <dependency>

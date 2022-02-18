@@ -1,0 +1,98 @@
+openapi: 3.0.3
+info:
+  title: Student Information Management System
+  version: 1.0.0
+servers:
+- url: https://localhost:8081/api
+paths:
+  /students:
+    get:
+      operationId: getStudents
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - id: 1
+                code: "001"
+                name: Khanh
+              - id: 2
+                code: "002"
+                name: Quan
+              schema:
+                items:
+                  $ref: '#/components/schemas/Student'
+                type: array
+          description: Get all students successfully
+      summary: Get all students
+      x-accepts: application/json
+  /students/{id}:
+    delete:
+      operationId: deleteStudentById
+      parameters:
+      - description: Id of the Student
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                message: Student deleted!
+              schema:
+                $ref: '#/components/schemas/Response'
+          description: Delete student information successfully
+      summary: Delete a student by id
+      x-accepts: application/json
+    get:
+      operationId: getStudentById
+      parameters:
+      - description: Id of the Student
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                id: 1
+                code: "001"
+                name: Khanh
+              schema:
+                $ref: '#/components/schemas/Student'
+          description: Get student information successfully
+      summary: Get a student by id
+      x-accepts: application/json
+components:
+  schemas:
+    Student:
+      example:
+        code: code
+        name: name
+        id: 0
+      properties:
+        id:
+          format: int64
+          type: integer
+        code:
+          type: string
+        name:
+          type: string
+      type: object
+    Response:
+      example:
+        message: message
+      properties:
+        message:
+          type: string
+      type: object
