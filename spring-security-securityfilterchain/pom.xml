@@ -3,7 +3,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.huongdanjava</groupId>
-  <artifactId>spring-security-abstractsecuritywebapplicationinitializer</artifactId>
+  <artifactId>spring-security-securityfilterchain</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
 
@@ -11,7 +11,7 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.source>1.8</maven.compiler.source>
 
-    <org.springframework.security-version>5.6.2</org.springframework.security-version>
+    <org.springframework.security-version>5.7.0-M2</org.springframework.security-version>
   </properties>
 
   <dependencies>
@@ -62,4 +62,11 @@
       </plugin>
     </plugins>
   </build>
+
+  <repositories>
+    <repository>
+      <id>spring</id>
+      <url>https://repo.spring.io/milestone/</url>
+    </repository>
+  </repositories>
 </project>

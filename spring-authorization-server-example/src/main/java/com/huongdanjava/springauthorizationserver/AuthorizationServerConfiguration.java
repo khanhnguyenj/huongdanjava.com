@@ -84,6 +84,7 @@ public class AuthorizationServerConfiguration {
   public JWKSource<SecurityContext> jwkSource() throws NoSuchAlgorithmException, KeyStoreException,
       CertificateException, FileNotFoundException, IOException {
     // RSAKey rsaKey = generateRsa();
+    // JWKSet jwkSet = new JWKSet(rsaKey);
     JWKSet jwkSet = buildJWKSet();
 
     return (jwkSelector, securityContext) -> jwkSelector.select(jwkSet);
