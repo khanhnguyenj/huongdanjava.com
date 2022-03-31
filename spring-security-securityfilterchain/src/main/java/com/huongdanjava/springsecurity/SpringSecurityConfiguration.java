@@ -1,8 +1,14 @@
 package com.huongdanjava.springsecurity;
 
+import static org.springframework.security.config.Customizer.withDefaults;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -16,30 +22,32 @@ public class SpringSecurityConfiguration {
             .antMatchers("/").hasRole("USER")
             .antMatchers("/admin/**").hasRole("ADMIN")
         )
-        .formLogin();
+        .formLogin(withDefaults());
     // @formatter:on
 
     return http.build();
   }
 
-  // @Override
-  // protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-  // auth.inMemoryAuthentication()
-  // .withUser("khanh").password("{noop}123456").roles("USER")
-  // .and()
-  // .withUser("thanh").password("{noop}123456").roles("ADMIN");
-  // }
-  //
-  // @Override
-  // protected void configure(HttpSecurity http) throws Exception {
-  // http.authorizeRequests()
-  // .antMatchers("/").hasRole("USER")
-  // .antMatchers("/admin/**").hasRole("ADMIN")
-  // .and().formLogin();
-  // }
-  //
-  // @Override
-  // public void configure(WebSecurity web) throws Exception {
-  // web.ignoring().antMatchers("/resources/**");
-  // }
+  @Bean
+  public UserDetailsManager userDetailsService() {
+    // @formatter:off
+    UserDetails user1 = User.withDefaultPasswordEncoder()
+        .username("khanh")
+        .password("123456")
+        .roles("USER")
+        .build();
+    UserDetails user2 = User.withDefaultPasswordEncoder()
+        .username("thanh")
+        .password("123456")
+        .roles("ADMIN")
+        .build();
+    // @formatter:on
+
+    return new InMemoryUserDetailsManager(user1, user2);
+  }
+
+  @Bean
+  public WebSecurityCustomizer webSecurityCustomizer() {
+    return (web) -> web.ignoring().antMatchers("/resources/**");
+  }
 }
