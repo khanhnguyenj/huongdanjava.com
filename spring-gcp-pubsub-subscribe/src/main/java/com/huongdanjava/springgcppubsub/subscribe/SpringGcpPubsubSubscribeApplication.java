@@ -25,6 +25,8 @@ public class SpringGcpPubsubSubscribeApplication implements CommandLineRunner {
       PubsubMessage pubsubMessage = c.getPubsubMessage();
 
       System.out.println(pubsubMessage.getData().toStringUtf8());
+
+      c.ack();
     });
 
     Thread.sleep(100000L);
