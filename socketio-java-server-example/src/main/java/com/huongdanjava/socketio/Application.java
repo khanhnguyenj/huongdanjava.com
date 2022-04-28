@@ -2,20 +2,24 @@ package com.huongdanjava.socketio;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
+import org.eclipse.jetty.http.pathmap.ServletPathSpec;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.eclipse.jetty.websocket.server.WebSocketUpgradeFilter;
 import io.socket.engineio.server.EngineIoServer;
 import io.socket.engineio.server.EngineIoServerOptions;
+import io.socket.engineio.server.JettyWebSocketHandler;
 import io.socket.socketio.server.SocketIoServer;
 
 public class Application {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws ServletException {
     // Init SocketIoServer
     EngineIoServerOptions engineIoServerOptions = EngineIoServerOptions.newFromDefault();
     EngineIoServer engineIoServer = new EngineIoServer(engineIoServerOptions);
@@ -39,6 +43,11 @@ public class Application {
         }, response);
       }
     }), "/socket.io/*");
+
+    WebSocketUpgradeFilter webSocketUpgradeFilter =
+        WebSocketUpgradeFilter.configure(servletContextHandler);
+    webSocketUpgradeFilter.addMapping(new ServletPathSpec("/socket.io/*"), (servletUpgradeRequest,
+        servletUpgradeResponse) -> new JettyWebSocketHandler(engineIoServer));
   }
 
 }
