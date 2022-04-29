@@ -56,14 +56,14 @@ public class Application {
         SocketIoSocket socket = (SocketIoSocket) args[0];
         System.out.println("Client " + socket.getId() + " has connected.");
 
-        // ns.emit("hello", "Hello World");
-      }
-    });
+        socket.on("message", new Emitter.Listener() {
+          @Override
+          public void call(Object... args) {
+            System.out.println("[Client " + socket.getId() + "] " + args[0]);
+          }
+        });
 
-    ns.on("message", new Emitter.Listener() {
-      @Override
-      public void call(Object... args) {
-        System.out.println(args[0]);
+        socket.send("hello", "Hello from Websocket server");
       }
     });
   }
