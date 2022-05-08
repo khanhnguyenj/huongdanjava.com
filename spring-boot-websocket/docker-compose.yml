@@ -25,6 +25,19 @@ services:
     networks:
       - huongdanjava
       
+  rabbitmq:
+    image: rabbitmq:0.0.1
+    container_name: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+      - 61613:61613
+    volumes:
+      - ~/Documents/data/rabbitmq/data/:/var/lib/rabbitmq
+      - ~/Documents/data/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+      - huongdanjava
+      
   nginx:
     image: nginx:0.0.1
     container_name: nginx
