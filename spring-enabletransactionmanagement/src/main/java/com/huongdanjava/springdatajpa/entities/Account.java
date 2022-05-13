@@ -1,4 +1,4 @@
-package com.huongdanjava.springenabletransactionmanagement;
+package com.huongdanjava.springdatajpa.entities;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -25,5 +25,4 @@ public class Account implements Serializable {
 
   @Column
   private BigDecimal amount;
-
 }
