@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public interface AccountDAO {
 
-    BigDecimal getCurrentAmount(int id);
+  BigDecimal getCurrentAmount(int id);
 
-    void updateAmount(int id, BigDecimal amount);
+  void updateAmount(int id, BigDecimal amount);
 }
