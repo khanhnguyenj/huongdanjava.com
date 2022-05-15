@@ -1,4 +1,4 @@
-package com.huongdanjava.springcomponentscan;
+package com.huongdanjava.spring;
 
 import org.springframework.stereotype.Component;
 
