@@ -7,7 +7,11 @@
 
   <int:channel id="channel" />
 
-  <int:inbound-channel-adapter channel="channel" expression="${'Khanh'}">
-    <int:poller fixed-delay="50000" />
+  <int:inbound-channel-adapter channel="channel" expression="{'Khanh'}">
+    <int:poller fixed-delay="5000" />
   </int:inbound-channel-adapter>
+
+  <int:logging-channel-adapter channel="channel"
+    logger-name="com.huongdanjava.springintegration"
+    expression="'Hello '.concat(payload).concat(' from Huong Dan Java')" />
 </beans>
