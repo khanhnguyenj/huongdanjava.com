@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class AppHealthIndicator implements HealthIndicator {
 
-    @Override
-    public Health health() {
-        return Health.down().build();
-    }
+  @Override
+  public Health health() {
+    return Health.down().build();
+  }
 }
