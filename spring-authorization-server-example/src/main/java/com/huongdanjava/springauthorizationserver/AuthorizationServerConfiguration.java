@@ -68,7 +68,7 @@ public class AuthorizationServerConfiguration {
         .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
         .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
         .tokenSettings(tokenSettings())
-        .scope("accees-hello")
+        .scope("access-hello")
         .build();
     // @formatter:on
 

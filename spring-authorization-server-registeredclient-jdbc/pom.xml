@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.6.3</version>
+    <version>2.7.0</version>
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
   <groupId>com.huongdanjava</groupId>
@@ -15,7 +15,7 @@
   <name>spring-authorization-server-registeredclient-jdbc</name>
   <description>Demo project for Spring Boot</description>
   <properties>
-    <java.version>11</java.version>
+    <java.version>17</java.version>
   </properties>
   <dependencies>
     <dependency>
@@ -34,7 +34,7 @@
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-oauth2-authorization-server</artifactId>
-      <version>0.2.3</version>
+      <version>0.3.0</version>
     </dependency>
 
     <dependency>
