@@ -20,11 +20,19 @@ public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer 
     // registry.enableSimpleBroker("/topic");
 
     // @formatter:off
+    // RabbitMQ
+//    registry.enableStompBrokerRelay("/topic")
+//        .setRelayHost("172.17.0.1")
+//        .setRelayPort(61613)
+//        .setSystemLogin("guest")
+//        .setSystemPasscode("guest");
+    // @formatter:on
+
+    // @formatter:off
+    // ActiveMQ
     registry.enableStompBrokerRelay("/topic")
-        .setRelayHost("172.17.0.1")
-        .setRelayPort(61613)
-        .setSystemLogin("guest")
-        .setSystemPasscode("guest");
+        .setRelayHost("localhost")
+        .setRelayPort(61613);
     // @formatter:on
 
     registry.setApplicationDestinationPrefixes("/app");

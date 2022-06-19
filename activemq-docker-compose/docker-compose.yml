@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  activemq:
+    image: activemq:0.0.1
+    container_name: 'activemq'
+    ports:
+      - 61616:61616
+      - 61613:61613
+      - 8161:8161
+    volumes:
+      - ~/Documents/data/activemq/data:/data/activemq
+      - ~/Documents/data/activemq/log:/var/log/activemq
