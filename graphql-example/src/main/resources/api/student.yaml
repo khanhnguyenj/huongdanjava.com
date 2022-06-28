@@ -1,0 +1,64 @@
+openapi: 3.0.3
+info:
+  title: Student Information Management System
+  version: 1.0.0
+servers:
+- url: https://localhost:8081/api
+paths:
+  /students:
+    get:
+      operationId: getStudents
+      summary: Get all students information, can be filtered by clazz name
+      parameters:
+      - name: clazz
+        in: query
+        description: Class of students
+        required: false
+        schema:
+          type: string
+      responses:
+        200:
+          description: Get all students information
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Student'
+              example:
+              - id: 1
+                code: '001'
+                name: Khanh
+                clazz: A
+              - id: 2
+                code: '002'
+                name: Quan
+                clazz: B
+  /students/names:
+    get:
+      operationId: getStudentNames
+      summary: Get student names
+      responses:
+        200:
+          description: Get student information
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  
+components:
+  schemas:
+    Student:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        code:
+          type: string
+        name:
+          type: string
+        clazz:
+          type: string
