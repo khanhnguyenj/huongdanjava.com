@@ -16,7 +16,7 @@ import javax.annotation.Generated;
  * A delegate to be called by the {@link StudentsApiController}}.
  * Implement this interface with a {@link org.springframework.stereotype.Service} annotated class.
  */
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-06-28T07:25:08.132588+07:00[Asia/Ho_Chi_Minh]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-06-29T06:46:29.853641+07:00[Asia/Ho_Chi_Minh]")
 public interface StudentsApiDelegate {
 
     default Optional<NativeWebRequest> getRequest() {
@@ -54,7 +54,7 @@ public interface StudentsApiDelegate {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : \"code\", \"name\" : \"name\", \"id\" : 0, \"clazz\" : \"clazz\" }";
+                    String exampleString = "{ \"code\" : \"code\", \"address\" : \"address\", \"name\" : \"name\", \"id\" : 0, \"clazz\" : \"clazz\", \"age\" : 6 }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

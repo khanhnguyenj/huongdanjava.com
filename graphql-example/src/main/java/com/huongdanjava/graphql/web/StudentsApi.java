@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-06-28T07:25:08.132588+07:00[Asia/Ho_Chi_Minh]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-06-29T06:46:29.853641+07:00[Asia/Ho_Chi_Minh]")
 @Validated
 @Tag(name = "students", description = "the students API")
 public interface StudentsApi {

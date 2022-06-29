@@ -29,10 +29,14 @@ paths:
               - id: 1
                 code: '001'
                 name: Khanh
+                age: 30
+                address: 'Binh Dinh'
                 clazz: A
               - id: 2
                 code: '002'
                 name: Quan
+                age: 25
+                address: 'Ho Chi Minh'
                 clazz: B
   /students/names:
     get:
@@ -59,6 +63,11 @@ components:
         code:
           type: string
         name:
+          type: string
+        age:
+          type: integer
+          format: int64
+        address:
           type: string
         clazz:
           type: string
