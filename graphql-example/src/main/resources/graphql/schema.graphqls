@@ -1,0 +1,12 @@
+type Query {
+  findStudents(clazz: String): [Student]
+}
+
+type Student {
+  id: ID
+  code: String
+  name: String
+  age: Int
+  address: String
+  clazz: String
+}

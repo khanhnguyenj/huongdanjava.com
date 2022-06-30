@@ -2,6 +2,7 @@ package com.huongdanjava.graphql.repository.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Data;
 
@@ -11,6 +12,7 @@ import lombok.Data;
 public class StudentModel {
 
   @Column
+  @Id
   private Long id;
 
   @Column
@@ -20,12 +22,12 @@ public class StudentModel {
   private String name;
 
   @Column
-  private Integer age;
+  private Long age;
 
   @Column
   private String address;
 
-  @Column
+  @Column(name = "class")
   private String clazz;
 
 }
