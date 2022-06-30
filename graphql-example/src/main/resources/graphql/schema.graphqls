@@ -1,5 +1,5 @@
 type Query {
-  findStudents(clazz: String): [Student]
+  students(clazz: String): [Student]
 }
 
 type Student {
