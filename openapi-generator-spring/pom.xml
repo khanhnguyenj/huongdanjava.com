@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.6.3</version>
+    <version>2.7.1</version>
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
   <groupId>com.huongdanjava</groupId>
@@ -26,7 +26,7 @@
     <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-ui</artifactId>
-      <version>1.6.6</version>
+      <version>1.6.9</version>
     </dependency>
 
     <dependency>
@@ -37,7 +37,7 @@
     <dependency>
       <groupId>org.openapitools</groupId>
       <artifactId>jackson-databind-nullable</artifactId>
-      <version>0.2.2</version>
+      <version>0.2.3</version>
     </dependency>
 
     <dependency>
@@ -62,7 +62,7 @@
       <plugin>
         <groupId>org.openapitools</groupId>
         <artifactId>openapi-generator-maven-plugin</artifactId>
-        <version>5.4.0</version>
+        <version>6.0.0</version>
         <executions>
           <execution>
             <goals>
