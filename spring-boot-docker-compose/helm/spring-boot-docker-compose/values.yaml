@@ -1,0 +1,13 @@
+replicaCount: 1
+
+image:
+  spring_boot_docker_compose:
+    repository: spring-boot-docker-compose
+    tag: 1.0.0
+  postgres:
+    repository: postgres
+    tag: 13.3
+
+service:
+  type: LoadBalancer
+  port: 8080

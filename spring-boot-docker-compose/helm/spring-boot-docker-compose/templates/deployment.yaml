@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-docker-compose
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "spring-boot-docker-compose.labels" . | indent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "spring-boot-docker-compose.labels" . | indent 8 }}
+    spec:
+      containers:
+      - name: spring-boot-docker-compose
+        image: "{{ .Values.image.spring_boot_docker_compose.repository }}:{{ .Values.image.spring_boot_docker_compose.tag }}"
+        ports:
+        - containerPort: 8080
+        env:
+          - name: "DATABASE_USERNAME"
+            value: "khanh"
+          - name: "DATABASE_PASSWORD"
+            value: "123456"
+          - name: "DATABASE_HOST"
+            value: "localhost"
+          - name: "DATABASE_NAME"
+            value: "test"
+          - name: "DATABASE_PORT"
+            value: "5432"
+      - name: postgres
+        image: "{{ .Values.image.postgres.repository }}:{{ .Values.image.postgres.tag }}"
+        ports:
+        - containerPort: 5432
+        env:
+          - name: "POSTGRES_PASSWORD"
+            value: "123456"
+          - name: "POSTGRES_USER"
+            value: "khanh"
+          - name: "POSTGRES_DB" 
+            value: "test"

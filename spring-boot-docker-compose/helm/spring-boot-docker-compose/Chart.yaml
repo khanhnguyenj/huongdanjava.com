@@ -1,0 +1,9 @@
+apiVersion: v2
+name: spring-boot-docker-compose
+description: A Helm chart for Kubernetes to deploy spring-boot-docker-compose application
+
+type: application
+
+version: 0.1.0
+
+appVersion: "1.0.0"
