@@ -19,16 +19,15 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
-import org.springframework.security.oauth2.core.oidc.OidcScopes;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
-import org.springframework.security.oauth2.server.authorization.config.ProviderSettings;
-import org.springframework.security.oauth2.server.authorization.config.TokenSettings;
+import org.springframework.security.oauth2.server.authorization.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
+import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
+import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 import org.springframework.security.web.SecurityFilterChain;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.PasswordLookup;
@@ -57,7 +56,7 @@ public class AuthorizationServerConfiguration {
         .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
         .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
         .redirectUri("https://oidcdebugger.com/debug")
-        .scope(OidcScopes.OPENID)
+        .scope("test")
         .build();
     // @formatter:on
 
@@ -111,10 +110,9 @@ public class AuthorizationServerConfiguration {
   }
 
   @Bean
-  public ProviderSettings providerSettings() {
+  public AuthorizationServerSettings authorizationServerSettings() {
     // @formatter:off
-    return ProviderSettings.builder()
-        .issuer("http://localhost:8080")
+    return AuthorizationServerSettings.builder()
         .build();
     // @formatter:on
   }
