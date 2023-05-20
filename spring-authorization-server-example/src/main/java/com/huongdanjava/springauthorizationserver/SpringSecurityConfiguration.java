@@ -1,6 +1,7 @@
 package com.huongdanjava.springauthorizationserver;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -10,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+@Configuration
 @EnableWebSecurity
 public class SpringSecurityConfiguration {
 
@@ -17,7 +19,7 @@ public class SpringSecurityConfiguration {
   SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
     // @formatter:off
     http
-        .authorizeRequests(authorizeRequests ->
+        .authorizeHttpRequests(authorizeRequests ->
             authorizeRequests.anyRequest().authenticated()
         )
         .formLogin(Customizer.withDefaults());
