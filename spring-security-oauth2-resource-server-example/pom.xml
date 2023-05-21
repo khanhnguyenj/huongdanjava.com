@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.7.0</version>
+    <version>3.1.0</version>
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
   <groupId>com.huongdanjava</groupId>
@@ -15,7 +15,7 @@
   <name>spring-security-oauth2-resource-server-example</name>
   <description>Demo project for Spring Boot</description>
   <properties>
-    <java.version>11</java.version>
+    <java.version>17</java.version>
   </properties>
   <dependencies>
     <dependency>
