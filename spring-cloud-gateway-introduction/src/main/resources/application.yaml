@@ -1,0 +1,11 @@
+server:
+  port: 9080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: exampleService
+          uri: http://localhost:8080/
+          predicates:
+            - Path=/hello
