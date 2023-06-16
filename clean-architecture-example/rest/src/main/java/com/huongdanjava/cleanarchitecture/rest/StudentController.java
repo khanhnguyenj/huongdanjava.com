@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.huongdanjava.cleanarchitecture.entities.Student;
 import com.huongdanjava.cleanarchitecture.rest.dto.StudentDto;
 import com.huongdanjava.cleanarchitecture.rest.mapper.StudentMapper;
@@ -17,14 +16,14 @@ import com.huongdanjava.cleanarchitecture.usecases.student.FindStudentByNameUseC
 @RequestMapping("/student")
 public class StudentController {
 
-	@Autowired
-	private FindStudentByNameUseCase findStudentByNameUseCase;
+  @Autowired
+  private FindStudentByNameUseCase findStudentByNameUseCase;
 
-	@GetMapping("/find")
-	public ResponseEntity<StudentDto> findByName(@RequestParam String name) {
-		Student student = findStudentByNameUseCase.find(name);
+  @GetMapping("/find")
+  public ResponseEntity<StudentDto> findByName(@RequestParam String name) {
+    Student student = findStudentByNameUseCase.find(name);
 
-		return new ResponseEntity<>(StudentMapper.toDto(student), HttpStatus.OK);
-	}
+    return new ResponseEntity<>(StudentMapper.toDto(student), HttpStatus.OK);
+  }
 
 }

@@ -4,5 +4,5 @@ import com.huongdanjava.cleanarchitecture.entities.Student;
 
 public interface StudentAdapter {
 
-    Student findByName(String name);
+  Student findByName(String name);
 }

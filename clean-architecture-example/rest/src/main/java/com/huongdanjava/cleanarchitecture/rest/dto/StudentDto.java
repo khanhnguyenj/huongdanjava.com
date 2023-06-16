@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 public class StudentDto {
 
-    private String name;
+  private String name;
 
-    private int age;
+  private int age;
 
 }

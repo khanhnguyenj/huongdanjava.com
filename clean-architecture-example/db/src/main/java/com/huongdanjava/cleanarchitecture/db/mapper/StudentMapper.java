@@ -5,15 +5,15 @@ import com.huongdanjava.cleanarchitecture.entities.Student;
 
 public class StudentMapper {
 
-	public static Student toEntity(StudentModel model) {
-		if (model == null) {
-			return null;
-		}
+  public static Student toEntity(StudentModel model) {
+    if (model == null) {
+      return null;
+    }
 
-		Student student = new Student();
-		student.setName(model.getName());
-		student.setAge(model.getAge());
+    Student student = new Student();
+    student.setName(model.getName());
+    student.setAge(model.getAge());
 
-		return student;
-	}
+    return student;
+  }
 }
