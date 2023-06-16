@@ -10,9 +10,7 @@ public class StudentMapper {
       return null;
     }
 
-    Student student = new Student();
-    student.setName(model.getName());
-    student.setAge(model.getAge());
+    Student student = new Student(model.getName(), model.getAge());
 
     return student;
   }

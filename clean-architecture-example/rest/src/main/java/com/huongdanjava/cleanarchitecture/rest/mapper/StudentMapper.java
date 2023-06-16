@@ -10,9 +10,7 @@ public class StudentMapper {
       return null;
     }
 
-    StudentDto studentDto = new StudentDto();
-    studentDto.setName(entity.getName());
-    studentDto.setAge(entity.getAge());
+    StudentDto studentDto = new StudentDto(entity.name(), entity.age());
 
     return studentDto;
   }
