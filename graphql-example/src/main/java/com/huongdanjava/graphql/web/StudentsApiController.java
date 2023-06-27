@@ -17,15 +17,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.constraints.*;
-import javax.validation.Valid;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-06-29T06:46:29.853641+07:00[Asia/Ho_Chi_Minh]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-06-27T15:23:22.901157-04:00[America/New_York]")
 @Controller
 @RequestMapping("${openapi.studentInformationManagementSystem.base-path:/api}")
 public class StudentsApiController implements StudentsApi {

@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.7.1</version>
+    <version>3.1.1</version>
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
   <groupId>com.huongdanjava</groupId>
@@ -31,26 +31,16 @@
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
-    <dependency>
+	<dependency>
       <groupId>org.springdoc</groupId>
-      <artifactId>springdoc-openapi-ui</artifactId>
-      <version>1.6.9</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.fasterxml.jackson.dataformat</groupId>
-      <artifactId>jackson-dataformat-yaml</artifactId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+      <version>2.1.0</version>
     </dependency>
 
     <dependency>
       <groupId>org.openapitools</groupId>
       <artifactId>jackson-databind-nullable</artifactId>
-      <version>0.2.3</version>
-    </dependency>
-
-    <dependency>
-      <groupId>javax.validation</groupId>
-      <artifactId>validation-api</artifactId>
+      <version>0.2.6</version>
     </dependency>
 
     <dependency>
@@ -98,7 +88,7 @@
       <plugin>
         <groupId>org.openapitools</groupId>
         <artifactId>openapi-generator-maven-plugin</artifactId>
-        <version>6.0.0</version>
+        <version>6.6.0</version>
         <executions>
           <execution>
             <goals>
@@ -112,6 +102,7 @@
               <output>.</output>
               <configOptions>
                 <delegatePattern>true</delegatePattern>
+                <useSpringBoot3>true</useSpringBoot3>
               </configOptions>
             </configuration>
           </execution>

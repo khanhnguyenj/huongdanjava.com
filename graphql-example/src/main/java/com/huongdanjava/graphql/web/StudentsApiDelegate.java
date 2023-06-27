@@ -10,13 +10,13 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * A delegate to be called by the {@link StudentsApiController}}.
  * Implement this interface with a {@link org.springframework.stereotype.Service} annotated class.
  */
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-06-29T06:46:29.853641+07:00[Asia/Ho_Chi_Minh]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-06-27T15:23:22.901157-04:00[America/New_York]")
 public interface StudentsApiDelegate {
 
     default Optional<NativeWebRequest> getRequest() {
@@ -33,7 +33,7 @@ public interface StudentsApiDelegate {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "\"\"";
+                    String exampleString = "[ \"\", \"\" ]";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -54,7 +54,7 @@ public interface StudentsApiDelegate {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : \"code\", \"address\" : \"address\", \"name\" : \"name\", \"id\" : 0, \"clazz\" : \"clazz\", \"age\" : 6 }";
+                    String exampleString = "[ { \"code\" : \"code\", \"address\" : \"address\", \"name\" : \"name\", \"id\" : 0, \"clazz\" : \"clazz\", \"age\" : 6 }, { \"code\" : \"code\", \"address\" : \"address\", \"name\" : \"name\", \"id\" : 0, \"clazz\" : \"clazz\", \"age\" : 6 } ]";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
