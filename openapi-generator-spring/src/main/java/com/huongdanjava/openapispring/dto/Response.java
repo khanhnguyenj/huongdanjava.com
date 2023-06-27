@@ -6,22 +6,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Response
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-02-18T10:29:18.203151+07:00[Asia/Ho_Chi_Minh]")
-public class Response   {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-06-27T14:24:29.472247-04:00[America/New_York]")
+public class Response {
 
-  @JsonProperty("message")
   private String message;
 
   public Response message(String message) {
@@ -34,7 +33,8 @@ public class Response   {
    * @return message
   */
   
-  @Schema(name = "message", required = false)
+  @Schema(name = "message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("message")
   public String getMessage() {
     return message;
   }

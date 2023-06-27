@@ -1,12 +1,32 @@
 package com.huongdanjava.openapispring.web;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.beans.factory.annotation.Autowired;
-import java.util.Optional;
-import javax.annotation.Generated;
+import com.huongdanjava.openapispring.dto.Response;
+import com.huongdanjava.openapispring.dto.Student;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-02-18T10:29:18.203151+07:00[Asia/Ho_Chi_Minh]")
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
+
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import jakarta.annotation.Generated;
+
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-06-27T14:24:29.472247-04:00[America/New_York]")
 @Controller
 @RequestMapping("${openapi.studentInformationManagementSystem.base-path:/api}")
 public class StudentsApiController implements StudentsApi {

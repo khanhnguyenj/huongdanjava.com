@@ -6,28 +6,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Student
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-02-18T10:29:18.203151+07:00[Asia/Ho_Chi_Minh]")
-public class Student   {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-06-27T14:24:29.472247-04:00[America/New_York]")
+public class Student {
 
-  @JsonProperty("id")
   private Long id;
 
-  @JsonProperty("code")
   private String code;
 
-  @JsonProperty("name")
   private String name;
 
   public Student id(Long id) {
@@ -40,7 +37,8 @@ public class Student   {
    * @return id
   */
   
-  @Schema(name = "id", required = false)
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("id")
   public Long getId() {
     return id;
   }
@@ -59,7 +57,8 @@ public class Student   {
    * @return code
   */
   
-  @Schema(name = "code", required = false)
+  @Schema(name = "code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("code")
   public String getCode() {
     return code;
   }
@@ -78,7 +77,8 @@ public class Student   {
    * @return name
   */
   
-  @Schema(name = "name", required = false)
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("name")
   public String getName() {
     return name;
   }

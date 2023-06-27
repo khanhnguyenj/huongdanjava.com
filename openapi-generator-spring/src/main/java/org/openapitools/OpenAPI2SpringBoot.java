@@ -1,19 +1,16 @@
 package org.openapitools;
 
-import com.fasterxml.jackson.databind.Module;
 import org.openapitools.jackson.nullable.JsonNullableModule;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import com.fasterxml.jackson.databind.Module;
 
-@SpringBootApplication
-@ComponentScan(basePackages = {"org.openapitools", "com.huongdanjava.openapispring.web" , "org.openapitools.configuration"})
+//@SpringBootApplication
+//@ComponentScan(basePackages = {"org.openapitools", "com.huongdanjava.openapispring.web" , "org.openapitools.configuration"})
 public class OpenAPI2SpringBoot implements CommandLineRunner {
 
     @Override
@@ -50,7 +47,7 @@ public class OpenAPI2SpringBoot implements CommandLineRunner {
 
             @Override
             public void addResourceHandlers(ResourceHandlerRegistry registry) {
-                registry.addResourceHandler("/swagger-ui/**").addResourceLocations("classpath:/META-INF/resources/webjars/swagger-ui/3.14.2/");
+                registry.addResourceHandler("/swagger-ui/**").addResourceLocations("classpath:/META-INF/resources/webjars/swagger-ui/4.18.2/");
             }
         };
     }

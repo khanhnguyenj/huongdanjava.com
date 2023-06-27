@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-//// @formatter:off
+// @formatter:off
 @ComponentScan(
     basePackages = {
         "org.openapitools",
