@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Test;
 
 import reactor.test.StepVerifier;
 
-public class DemoTest {
+class DemoTest {
 
   @Test
-  public void testGetStudentName() {
+  void testGetStudentName() {
     Demo demo = new Demo();
 
     StepVerifier.create(demo.getStudentName())
@@ -20,7 +20,7 @@ public class DemoTest {
   }
 
   @Test
-  public void testGetStudentNames() {
+  void testGetStudentNames() {
     Demo demo = new Demo();
 
     StepVerifier.create(demo.getStudentNames())
