@@ -7,11 +7,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Application {
 
-	public static void main(String[] args) {
-        ApplicationContext ac = new ClassPathXmlApplicationContext("spring.xml");
+  public static void main(String[] args) {
+    ApplicationContext ac = new ClassPathXmlApplicationContext("spring.xml");
 
-        StudentRepository studentRepository = (StudentRepository) ac.getBean("studentRepository");
-        List<Student> students = studentRepository.findByClazzOrderByNameDesc("A");
-        students.forEach(s -> System.out.println(s.getName()));
-    }
+    StudentRepository studentRepository = (StudentRepository) ac.getBean("studentRepository");
+    List<Student> students = studentRepository.findByClazzOrderByNameDesc("A");
+    students.forEach(s -> System.out.println(s.getName()));
+  }
 }
