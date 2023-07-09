@@ -25,6 +25,11 @@
       <artifactId>r2dbc-postgresql</artifactId>
       <version>0.8.13.RELEASE</version>
     </dependency>
+    <dependency>
+      <groupId>io.r2dbc</groupId>
+      <artifactId>r2dbc-pool</artifactId>
+      <version>1.0.0.RELEASE</version>
+    </dependency>
 <!--    <dependency>-->
 <!--      <groupId>ch.qos.logback</groupId>-->
 <!--      <artifactId>logback-classic</artifactId>-->
