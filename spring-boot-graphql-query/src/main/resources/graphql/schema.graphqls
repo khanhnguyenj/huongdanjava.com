@@ -1,3 +1,9 @@
-type Query { 
-  hello(name: String): String 
+type Query {
+  students: [Student]
+  studentById(id: Int): Student
+}
+
+type Student {
+  id: ID,
+  name: String
 }
