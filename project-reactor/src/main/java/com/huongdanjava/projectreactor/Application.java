@@ -5,15 +5,15 @@ import reactor.core.publisher.Mono;
 
 public class Application {
 
-	public static void main(String[] args) {
-		Flux<String> flux = Flux.just("Khanh", "Quan");
+  public static void main(String[] args) {
+    Flux<String> flux = Flux.just("Khanh", "Quan");
 
-		flux.flatMap(s -> Mono.just(s.length()))
-			.map(value -> {
-				System.out.println(value);
-				return value;
-			})
-			.subscribe();
-	}
+    flux.flatMap(s -> Mono.just(s.length()))
+        .map(value -> {
+          System.out.println(value);
+          return value;
+        })
+        .subscribe();
+  }
 
 }

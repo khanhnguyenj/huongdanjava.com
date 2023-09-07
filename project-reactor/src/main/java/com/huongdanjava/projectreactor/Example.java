@@ -6,11 +6,11 @@ import reactor.core.publisher.Flux;
 
 public class Example {
 
-    public static void main(String[] args) throws InterruptedException {
-        Flux<String> flux = Flux.just("Khanh", "Quan", "Thanh");
+  public static void main(String[] args) throws InterruptedException {
+    Flux<String> flux = Flux.just("Khanh", "Quan", "Thanh");
 
-        flux.subscribe(new Consumer());
+    flux.subscribe(new Consumer());
 
-        TimeUnit.SECONDS.sleep(10);
-    }
+    TimeUnit.SECONDS.sleep(10);
+  }
 }
