@@ -9,10 +9,11 @@ import reactor.core.publisher.Flux;
 @RestController
 public class StudentController {
 
-    @Autowired StudentService studentService;
+  @Autowired
+  StudentService studentService;
 
-    @RequestMapping(value = "/students", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<Student> findAll() {
-        return studentService.all();
-    }
+  @RequestMapping(value = "/students", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+  public Flux<Student> findAll() {
+    return studentService.all();
+  }
 }

@@ -10,12 +10,13 @@ import java.time.Duration;
 @Service
 public class StudentService {
 
-    public Flux<Student> all() {
-        RandomStringGenerator rsg = new RandomStringGenerator.Builder()
-            .withinRange('a', 'z')
-            .build();
+  public Flux<Student> all() {
+    RandomStringGenerator rsg = new RandomStringGenerator.Builder()
+        .withinRange('a', 'z')
+        .build();
 
-        return Flux.generate((SynchronousSink<Student> sink) -> sink.next(new Student(rsg.generate(10))))
-            .delayElements(Duration.ofSeconds(1L));
-    }
+    return Flux.generate(
+            (SynchronousSink<Student> sink) -> sink.next(new Student(rsg.generate(10))))
+        .delayElements(Duration.ofSeconds(1L));
+  }
 }
