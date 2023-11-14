@@ -106,9 +106,17 @@
       <plugin>
         <groupId>org.wildfly.plugins</groupId>
         <artifactId>wildfly-maven-plugin</artifactId>
-        <version>4.1.0.Final</version>
+        <version>4.2.0.Final</version>
         <configuration>
           <version>27.0.1.Final</version>
+          <add-user>
+            <users>
+              <user>
+                <username>khanh</username>
+                <password>123456</password>
+              </user>
+            </users>
+          </add-user>
         </configuration>
       </plugin>
     </plugins>
