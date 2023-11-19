@@ -4,7 +4,7 @@ import java.util.Optional;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import com.huongdanjava.springdatajpa.entity.Student;
-import com.huongdanjava.springdatajpa.repositories.StudentRepository;
+import com.huongdanjava.springdatajpa.repository.StudentRepository;
 
 public class Application {
 

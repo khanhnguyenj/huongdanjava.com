@@ -12,7 +12,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.TransactionManager;
 
 @Configuration
-@EnableJpaRepositories(basePackages = {"com.huongdanjava.springdatajpa.repositories"})
+@EnableJpaRepositories(basePackages = {"com.huongdanjava.springdatajpa.repository"})
 public class DatabaseConfiguration {
 
   @Bean
