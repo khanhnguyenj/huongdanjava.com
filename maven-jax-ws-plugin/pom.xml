@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.huongdanjava.maven</groupId>
+  <artifactId>maven-jax-ws-plugin</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <properties>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.sun.xml.ws</groupId>
+        <artifactId>jaxws-maven-plugin</artifactId>
+        <version>4.0.2</version>
+        <configuration>
+          <!--          <wsdlDirectory>${project.basedir}/src/main/resources/wsdl</wsdlDirectory>-->
+          <wsdlFiles>
+            <wsdlFile>${project.basedir}/src/main/resources/wsdl/hello.wsdl</wsdlFile>
+          </wsdlFiles>
+          <packageName>com.huongdanjava.soap</packageName>
+          <sourceDestDir>
+            ${project.basedir}/src/main/java
+          </sourceDestDir>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>wsimport</goal>
+            </goals>
+            <phase>install</phase>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
