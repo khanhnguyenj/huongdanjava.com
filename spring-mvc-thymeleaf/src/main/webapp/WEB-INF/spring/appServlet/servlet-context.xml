@@ -15,18 +15,18 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
-	<beans:bean id="viewResolver" class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
+	<beans:bean id="viewResolver" class="org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".html" />
 		<beans:property name="cacheable" value="false" />
 	</beans:bean>
 
-	<beans:bean id="engine" class="org.thymeleaf.spring5.SpringTemplateEngine">
+	<beans:bean id="engine" class="org.thymeleaf.spring6.SpringTemplateEngine">
 		<beans:property name="templateResolver" ref="viewResolver" />
 		<beans:property name="enableSpringELCompiler" value="true" />
 	</beans:bean>
 	
-	<beans:bean id="" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
+	<beans:bean id="" class="org.thymeleaf.spring6.view.ThymeleafViewResolver">
 	  	<beans:property name="templateEngine" ref="engine" />
 	</beans:bean>
 	
