@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+import "constants/util.proto";
+
+option java_multiple_files = true;
+option java_package = "com.huongdanjava.grpc.employee";
+
+message BookRequest{
+  string book_id = 1;
+}
+message BookResponse {
+  string book_id = 1;
+  string name = 2;
+  constants.Type type = 3;
+}
+
+service BookService {
+  rpc getBook(BookRequest) returns (BookResponse) {};
+}
