@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option java_multiple_files = true;
 
-package com.huongdanjava.grpc;
+package com.huongdanjava.springboot.grpc;
 
 message HelloRequest {
   string name = 1;
