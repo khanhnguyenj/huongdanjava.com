@@ -11,6 +11,7 @@ public class Hello {
   }
 
   public String hello() {
+    System.out.println("hello() called ...");
     if (failedTimes < maximumFailedTimes) {
       failedTimes++;
       throw new RuntimeException("Something went wrong");
