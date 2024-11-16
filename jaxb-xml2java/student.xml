@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <student>
-	<name>John</name>
-	<code>12345</code>
-	<age>19</age>
+  <name>John</name>
+  <code>12345</code>
+  <age>19</age>
 </student>
