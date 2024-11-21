@@ -125,7 +125,7 @@
 		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
-			<version>4.3.4</version>
+			<version>4.8.0</version>
 		</dependency>
 
 		<!-- Test -->
