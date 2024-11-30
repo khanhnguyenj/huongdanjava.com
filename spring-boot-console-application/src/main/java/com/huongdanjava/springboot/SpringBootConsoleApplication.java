@@ -4,19 +4,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class SpringBootConsoleApplication implements CommandLineRunner {
-	
-	@Autowired
-	private HelloWorld helloWorld;
+public class SpringBootConsoleApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootConsoleApplication.class, args);
-	}
+  @Autowired
+  private HelloWorld helloWorld;
 
-	@Override
-	public void run(String... args) throws Exception {
-		helloWorld.say();
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(SpringBootConsoleApplication.class, args);
+  }
+
+  @Bean
+  public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
+    return args -> {
+      helloWorld.say();
+    };
+  }
 }
