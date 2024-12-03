@@ -7,17 +7,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class SpringBootConfigurationPropertiesApplication implements CommandLineRunner {
-	
-	@Autowired
-	private Student student;
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootConfigurationPropertiesApplication.class, args);
-	}
+  @Autowired
+  private Student student;
 
-	@Override
-	public void run(String... args) throws Exception {
-		System.out.println(student.getClazz() + "-" + student.getName() + "-" + student.getScores());
-		System.out.println(student.getAddress().getStreet());
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(SpringBootConfigurationPropertiesApplication.class, args);
+  }
+
+  @Override
+  public void run(String... args) throws Exception {
+    System.out.println(student.getClazz() + "-" + student.getName() + "-" + student.getScores());
+    System.out.println(student.getAddress().getStreet());
+  }
 }

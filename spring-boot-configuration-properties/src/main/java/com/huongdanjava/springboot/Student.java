@@ -11,68 +11,68 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties()
 public class Student {
 
-	private String name;
+  private String name;
 
-	private String clazz;
+  private String clazz;
 
-	private List<Integer> scores;
-	
-	private Address address = new Address();
+  private List<Integer> scores;
 
-	class Address {
-		
-		private String street;
-		
-		private String city;
+  private Address address = new Address();
 
-		public String getStreet() {
-			return street;
-		}
+  class Address {
 
-		public void setStreet(String street) {
-			this.street = street;
-		}
+    private String street;
 
-		public String getCity() {
-			return city;
-		}
+    private String city;
 
-		public void setCity(String city) {
-			this.city = city;
-		}
+    public String getStreet() {
+      return street;
+    }
 
-	}
+    public void setStreet(String street) {
+      this.street = street;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getCity() {
+      return city;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setCity(String city) {
+      this.city = city;
+    }
 
-	public String getClazz() {
-		return clazz;
-	}
+  }
 
-	public void setClazz(String clazz) {
-		this.clazz = clazz;
-	}
+  public String getName() {
+    return name;
+  }
 
-	public List<Integer> getScores() {
-		return scores;
-	}
+  public void setName(String name) {
+    this.name = name;
+  }
 
-	public void setScores(List<Integer> scores) {
-		this.scores = scores;
-	}
+  public String getClazz() {
+    return clazz;
+  }
 
-	public Address getAddress() {
-		return address;
-	}
+  public void setClazz(String clazz) {
+    this.clazz = clazz;
+  }
 
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-	
+  public List<Integer> getScores() {
+    return scores;
+  }
+
+  public void setScores(List<Integer> scores) {
+    this.scores = scores;
+  }
+
+  public Address getAddress() {
+    return address;
+  }
+
+  public void setAddress(Address address) {
+    this.address = address;
+  }
+
 }
