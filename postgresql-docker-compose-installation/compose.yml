@@ -1,0 +1,24 @@
+services:
+  postgresql:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: khanh
+      POSTGRES_PASSWORD: 123456
+    volumes:
+      - ./postgresql_data:/var/lib/postgresql/data
+    ports:
+      - 5431:5432
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: huongdanjava.com@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: 123456
+    volumes:
+      - ./pgadmin_data:/var/lib/pgadmin
+    ports:
+      - 8888:80
+
+networks:
+  huongdanjava:
+    driver: bridge
