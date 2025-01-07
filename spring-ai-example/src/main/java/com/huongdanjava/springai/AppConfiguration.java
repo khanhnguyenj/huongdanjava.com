@@ -13,7 +13,7 @@ public class AppConfiguration {
   @Bean
   OpenAiApi openAiApi() {
     return new OpenAiApi(
-        "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");
+        "<your_api_token_here>");
   }
 
   @Bean
