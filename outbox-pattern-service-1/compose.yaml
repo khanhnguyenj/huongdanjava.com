@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    volumes:
+      - ./src/main/resources/db.sql:/docker-entrypoint-initdb.d/db.sql
+    environment:
+      - POSTGRES_DB=outbox_pattern_example
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_USER=khanh
+    command:
+      - postgres
+      - -c
+      - wal_level=logical
+      - -c
+      - shared_preload_libraries=pgoutput
+    ports:
+      - '5430:5432'
