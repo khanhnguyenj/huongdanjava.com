@@ -14,7 +14,7 @@ public class Application {
     List<Student> students = studentService.getAllStudents(connection);
 
     students.forEach(s -> {
-      System.out.println("ID: " + s.id()  + ", name: " + s.name());
+      System.out.println("ID: " + s.id() + ", name: " + s.name());
     });
   }
 }

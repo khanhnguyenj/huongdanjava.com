@@ -10,14 +10,11 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testcontainers.containers.MySQLContainer;
-import org.testcontainers.containers.output.Slf4jLogConsumer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 @Testcontainers
 public class StudentServiceTest {
-
-  private static Logger log = LoggerFactory.getLogger(StudentServiceTest.class);
 
   private StudentService studentService = new StudentService();
 
