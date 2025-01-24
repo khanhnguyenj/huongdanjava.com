@@ -1,0 +1,21 @@
+services:
+  # postgresql:
+  #   image: postgres:latest
+  #   environment:
+  #     POSTGRES_USER: khanh
+  #     POSTGRES_PASSWORD: 123456
+  #   volumes:
+  #     - ./postgresql_data:/var/lib/postgresql/data
+  #   ports:
+  #     - 5431:5432
+
+  n8n:
+    image: n8nio/n8n
+    volumes:
+      - ./n8n_data:/home/node/.n8n
+    ports:
+      - 5678:5678
+
+networks:
+  huongdanjava:
+    driver: bridge
