@@ -8,28 +8,26 @@
   <packaging>war</packaging>
 
   <properties>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+    <maven.compiler.source>21</maven.compiler.source>
 
-    <org.springframework.security-version>5.7.0-M2</org.springframework.security-version>
+    <org.springframework-version>6.2.2</org.springframework-version>
+    <org.springframework.security-version>6.4.2</org.springframework.security-version>
+    <jakarta.servlet-api-version>6.1.0</jakarta.servlet-api-version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
-      <version>5.3.17</version>
+      <version>${org.springframework-version}</version>
     </dependency>
+    <!-- Servlet -->
     <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>4.0.1</version>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <version>${jakarta.servlet-api-version}</version>
       <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>jstl</artifactId>
-      <version>1.2</version>
     </dependency>
 
     <dependency>
@@ -47,26 +45,10 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>3.3.2</version>
-        <configuration>
-          <failOnMissingWebXml>false</failOnMissingWebXml>
-        </configuration>
-      </plugin>
-
-      <plugin>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
-        <version>9.4.45.v20220203</version>
+        <version>11.0.24</version>
       </plugin>
     </plugins>
   </build>
-
-  <repositories>
-    <repository>
-      <id>spring</id>
-      <url>https://repo.spring.io/milestone/</url>
-    </repository>
-  </repositories>
 </project>
