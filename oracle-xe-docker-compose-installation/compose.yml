@@ -1,0 +1,16 @@
+services:
+  oracle-xe:
+    image: gvenzl/oracle-xe
+    environment:
+      ORACLE_PASSWORD: 123456
+      APP_USER: khanh
+      APP_USER_PASSWORD: 123456
+    volumes:
+      - ./oracle_data:/opt/oracle/oradata
+    ports:
+      - 1521:1521
+      - 8080:8080  # APEX/HTTP
+
+networks:
+  huongdanjava:
+    driver: bridge
