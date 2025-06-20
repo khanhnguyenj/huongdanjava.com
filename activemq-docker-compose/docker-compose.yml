@@ -1,13 +1,10 @@
-version: '3.9'
-
 services:
-  activemq:
-    image: activemq:0.0.1
-    container_name: 'activemq'
+  activemq-artemis:
+    image: apache/activemq-artemis:latest
+    container_name: 'activemq-artemis'
     ports:
       - 61616:61616
-      - 61613:61613
       - 8161:8161
     volumes:
-      - ~/Documents/data/activemq/data:/data/activemq
-      - ~/Documents/data/activemq/log:/var/log/activemq
+      - ./activemq_data:/data/activemq
+      - ./activemq_log:/var/log/activemq
