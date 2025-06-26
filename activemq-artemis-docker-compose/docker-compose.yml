@@ -1,0 +1,10 @@
+services:
+  activemq-artemis:
+    image: apache/activemq-artemis:latest
+    container_name: 'activemq-artemis'
+    ports:
+      - 61616:61616
+      - 8161:8161
+    volumes:
+      - ./activemq_data:/data/activemq
+      - ./activemq_log:/var/log/activemq
