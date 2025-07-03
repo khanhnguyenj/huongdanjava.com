@@ -1,0 +1,11 @@
+services:
+  cassandra:
+    image: cassandra
+    volumes:
+      - ./cassandra_data:/var/lib/cassandra
+    ports:
+      - 7001:7000
+
+networks:
+  huongdanjava:
+    driver: bridge
