@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: studentService
+              uri: http://localhost:8081
+              predicates:
+                - Path=/students/**
+            - id: classService
+              uri: http://localhost:8082
+              predicates:
+                - Path=/classes/**
