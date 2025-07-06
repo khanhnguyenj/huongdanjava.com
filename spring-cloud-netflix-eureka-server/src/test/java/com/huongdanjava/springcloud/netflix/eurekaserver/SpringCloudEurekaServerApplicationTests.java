@@ -1,4 +1,4 @@
-package com.huongdanjava.springcloud.eurekaserver;
+package com.huongdanjava.springcloud.netflix.eurekaserver;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
