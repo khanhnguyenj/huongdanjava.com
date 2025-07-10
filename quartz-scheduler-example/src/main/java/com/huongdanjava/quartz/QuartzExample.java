@@ -11,23 +11,23 @@ import org.quartz.impl.StdSchedulerFactory;
 
 public class QuartzExample {
 
-	public static void main(String[] args) throws SchedulerException {
-		Trigger trigger = TriggerBuilder.newTrigger()
-			.withIdentity("huongdanjavaTrigger", "group")
-			.withSchedule(
-				SimpleScheduleBuilder.simpleSchedule()
-					.withIntervalInSeconds(5)
-					.repeatForever()
-			)
-			.build();
+  public static void main(String[] args) throws SchedulerException {
+    Trigger trigger = TriggerBuilder.newTrigger()
+        .withIdentity("huongdanjavaTrigger", "group")
+        .withSchedule(
+            SimpleScheduleBuilder.simpleSchedule()
+                .withIntervalInSeconds(5)
+                .repeatForever()
+        )
+        .build();
 
-		JobDetail job = JobBuilder.newJob(QuartzJob.class)
-			.withIdentity("huongdanjavaJob", "group")
-			.build();
+    JobDetail job = JobBuilder.newJob(QuartzJob.class)
+        .withIdentity("huongdanjavaJob", "group")
+        .build();
 
-		Scheduler scheduler = new StdSchedulerFactory().getScheduler();
-		scheduler.start();
-		scheduler.scheduleJob(job, trigger);
-	}
+    Scheduler scheduler = new StdSchedulerFactory().getScheduler();
+    scheduler.start();
+    scheduler.scheduleJob(job, trigger);
+  }
 
 }
