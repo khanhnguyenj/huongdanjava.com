@@ -1,43 +1,43 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<!-- 	<bean id="hello" class="com.huongdanjava.springquartz.Hello"/> -->
-	
-<!-- 	<bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"> -->
-<!-- 		<property name="targetObject" ref="hello"/> -->
-<!-- 		<property name="targetMethod" value="sayHello"/> -->
-<!-- 	</bean> -->
+  <!-- 	<bean id="hello" class="com.huongdanjava.spring.quartz.Hello"/> -->
 
-	<bean id="student" class="com.huongdanjava.springquartz.Student">
-		<constructor-arg value="Khanh"/>
-	</bean>
-	
-	<bean id="jobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
-		<property name="jobClass" value="com.huongdanjava.springquartz.Hello"/>
-		<property name="jobDataMap">
-			<map>
-				<entry key="student" value-ref="student"/>
-			</map>
-		</property>
-	</bean>
-	
-<!-- 	<bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean"> -->
-<!-- 		<property name="jobDetail" ref="jobDetail" /> -->
-<!-- 		<property name="startDelay" value="1000" /> -->
-<!-- 		<property name="repeatInterval" value="2000" /> -->
-<!-- 	</bean> -->
-	
-	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-		<property name="jobDetail" ref="jobDetail"/>
-		<property name="cronExpression" value="0/5 * * * * ?"/>
-	</bean>
-	
-	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-		<property name="triggers">
-			<list>
-				<ref bean="cronTrigger" />
-			</list>
-		</property>
-	</bean>
+  <!-- 	<bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"> -->
+  <!-- 		<property name="targetObject" ref="hello"/> -->
+  <!-- 		<property name="targetMethod" value="sayHello"/> -->
+  <!-- 	</bean> -->
+
+  <bean id="student" class="com.huongdanjava.spring.quartz.Student">
+    <constructor-arg value="Khanh"/>
+  </bean>
+
+  <bean id="jobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+    <property name="jobClass" value="com.huongdanjava.spring.quartz.Hello"/>
+    <property name="jobDataMap">
+      <map>
+        <entry key="student" value-ref="student"/>
+      </map>
+    </property>
+  </bean>
+
+  <!-- 	<bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean"> -->
+  <!-- 		<property name="jobDetail" ref="jobDetail" /> -->
+  <!-- 		<property name="startDelay" value="1000" /> -->
+  <!-- 		<property name="repeatInterval" value="2000" /> -->
+  <!-- 	</bean> -->
+
+  <bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="jobDetail"/>
+    <property name="cronExpression" value="0/5 * * * * ?"/>
+  </bean>
+
+  <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    <property name="triggers">
+      <list>
+        <ref bean="cronTrigger"/>
+      </list>
+    </property>
+  </bean>
 </beans>
