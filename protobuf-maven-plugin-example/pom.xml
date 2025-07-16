@@ -13,7 +13,7 @@
     <maven.compiler.target>21</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <grpc.version>1.66.0</grpc.version>
+    <grpc.version>1.73.0</grpc.version>
   </properties>
 
   <dependencyManagement>
@@ -41,6 +41,11 @@
       <groupId>io.grpc</groupId>
       <artifactId>grpc-protobuf</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
+      <version>4.31.1</version>
+    </dependency>
 
     <dependency>
       <groupId>javax.annotation</groupId>
@@ -63,10 +68,10 @@
         <artifactId>protobuf-maven-plugin</artifactId>
         <version>0.6.1</version>
         <configuration>
-          <protocArtifact>com.google.protobuf:protoc:3.25.4:exe:${os.detected.classifier}
+          <protocArtifact>com.google.protobuf:protoc:4.31.1:exe:${os.detected.classifier}
           </protocArtifact>
           <pluginId>grpc-java</pluginId>
-          <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.66.0:exe:${os.detected.classifier}
+          <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.73.0:exe:${os.detected.classifier}
           </pluginArtifact>
         </configuration>
         <executions>
