@@ -1,36 +1,76 @@
-openapi: 3.0.3
+openapi: 3.1.0
 info:
-  title: Student Information Management System
+  title: Student Management System
   version: 1.0.0
 servers:
 - url: https://localhost:8081/api
 paths:
   /students:
     get:
-      operationId: getStudents
+      operationId: getAllStudents
+      parameters:
+      - description: Page number (1-based).
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          minimum: 1
+          type: integer
+        style: form
+      - description: Number of items per page.
+        explode: true
+        in: query
+        name: size
+        required: false
+        schema:
+          default: 10
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
-              example:
-              - id: 1
-                code: "001"
-                name: Khanh
-              - id: 2
-                code: "002"
-                name: Quan
               schema:
-                items:
-                  $ref: '#/components/schemas/Student'
-                type: array
+                $ref: "#/components/schemas/GetAllStudentsResponse"
           description: Get all students successfully
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
       summary: Get all students
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+    post:
+      operationId: addNewStudent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Student"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddNewStudentResponse"
+          description: Add new student successfully
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+      summary: Add a new student
+      x-content-type: application/json
+      x-accepts:
+      - application/json
   /students/{id}:
     delete:
       operationId: deleteStudentById
       parameters:
-      - description: Id of the Student
+      - description: Student Id
         explode: false
         in: path
         name: id
@@ -42,17 +82,20 @@ paths:
         "200":
           content:
             application/json:
-              example:
-                message: Student deleted!
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: "#/components/schemas/DeleteStudentResponse"
           description: Delete student information successfully
-      summary: Delete a student by id
-      x-accepts: application/json
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+      summary: Delete a student by Id
+      x-accepts:
+      - application/json
     get:
       operationId: getStudentById
       parameters:
-      - description: Id of the Student
+      - description: Student Id
         explode: false
         in: path
         name: id
@@ -64,35 +107,208 @@ paths:
         "200":
           content:
             application/json:
-              example:
-                id: 1
-                code: "001"
-                name: Khanh
               schema:
-                $ref: '#/components/schemas/Student'
+                $ref: "#/components/schemas/GetStudentByIdResponse"
           description: Get student information successfully
-      summary: Get a student by id
-      x-accepts: application/json
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+      summary: Get a student by Id
+      x-accepts:
+      - application/json
+    parameters:
+    - description: Student Id
+      explode: false
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+      style: simple
+    put:
+      operationId: updateStudent
+      parameters:
+      - description: Student Id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Student"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdateStudentResponse"
+          description: Update student information successfully
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+      summary: Update a student
+      x-content-type: application/json
+      x-accepts:
+      - application/json
 components:
+  responses:
+    BadRequest:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/inline_object"
+      description: Bad Request
+    InternalServerError:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/inline_object_1"
+      description: Internal Server Error
   schemas:
     Student:
       example:
-        code: code
-        name: name
-        id: 0
+        code: 1234
+        name: Khanh
+        id: 1
       properties:
         id:
+          example: 1
           format: int64
           type: integer
         code:
+          example: 1234
           type: string
         name:
+          example: Khanh
           type: string
-      type: object
-    Response:
+    GetAllStudentsResponse:
+      allOf:
+      - properties:
+          success:
+            type: boolean
+          message:
+            type: string
+        required:
+        - success
       example:
-        message: message
+        totalItems: 99
+        size: 10
+        data:
+        - code: 1234
+          name: Khanh
+          id: 1
+        - code: 1234
+          name: Khanh
+          id: 1
+        totalPages: 10
+        page: 1
       properties:
-        message:
-          type: string
-      type: object
+        page:
+          description: Page number
+          example: 1
+        size:
+          description: Number of items
+          example: 10
+        totalItems:
+          description: Total items
+          example: 99
+        totalPages:
+          description: Total pages
+          example: 10
+        data:
+          items:
+            $ref: "#/components/schemas/Student"
+    GetStudentByIdResponse:
+      allOf:
+      - properties:
+          success:
+            type: boolean
+          message:
+            type: string
+        required:
+        - success
+      example:
+        data:
+          code: 1234
+          name: Khanh
+          id: 1
+      properties:
+        data:
+          $ref: "#/components/schemas/Student"
+    AddNewStudentResponse:
+      allOf:
+      - properties:
+          success:
+            type: boolean
+          message:
+            type: string
+        required:
+        - success
+      example:
+        data:
+          code: 1234
+          name: Khanh
+          id: 1
+      properties:
+        data:
+          $ref: "#/components/schemas/Student"
+    UpdateStudentResponse:
+      allOf:
+      - properties:
+          success:
+            type: boolean
+          message:
+            type: string
+        required:
+        - success
+      example:
+        data:
+          code: 1234
+          name: Khanh
+          id: 1
+      properties:
+        data:
+          $ref: "#/components/schemas/Student"
+    DeleteStudentResponse:
+      allOf:
+      - properties:
+          success:
+            type: boolean
+          message:
+            type: string
+        required:
+        - success
+      example:
+        success: true
+        message: Student deleted!
+    inline_object:
+      allOf:
+      - properties:
+          success:
+            type: boolean
+          message:
+            type: string
+        required:
+        - success
+      example:
+        success: false
+        message: Required fields are missing
+    inline_object_1:
+      allOf:
+      - properties:
+          success:
+            type: boolean
+          message:
+            type: string
+        required:
+        - success
+      example:
+        success: false
+        message: Internal Server Error

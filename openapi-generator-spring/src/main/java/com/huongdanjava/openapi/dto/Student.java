@@ -1,9 +1,10 @@
-package com.huongdanjava.openapispring.dto;
+package com.huongdanjava.openapi.dto;
 
 import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import jakarta.validation.Valid;
@@ -18,16 +19,16 @@ import jakarta.annotation.Generated;
  * Student
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-06-27T14:24:29.472247-04:00[America/New_York]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-09-28T20:23:53.641444+08:00[Asia/Singapore]", comments = "Generator version: 7.15.0")
 public class Student {
 
-  private Long id;
+  private @Nullable Long id;
 
-  private String code;
+  private @Nullable String code;
 
-  private String name;
+  private @Nullable String name;
 
-  public Student id(Long id) {
+  public Student id(@Nullable Long id) {
     this.id = id;
     return this;
   }
@@ -35,19 +36,19 @@ public class Student {
   /**
    * Get id
    * @return id
-  */
+   */
   
-  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "id", example = "1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public Long getId() {
+  public @Nullable Long getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(@Nullable Long id) {
     this.id = id;
   }
 
-  public Student code(String code) {
+  public Student code(@Nullable String code) {
     this.code = code;
     return this;
   }
@@ -55,19 +56,19 @@ public class Student {
   /**
    * Get code
    * @return code
-  */
+   */
   
-  @Schema(name = "code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "code", example = "1234", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
-  public String getCode() {
+  public @Nullable String getCode() {
     return code;
   }
 
-  public void setCode(String code) {
+  public void setCode(@Nullable String code) {
     this.code = code;
   }
 
-  public Student name(String name) {
+  public Student name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -75,15 +76,15 @@ public class Student {
   /**
    * Get name
    * @return name
-  */
+   */
   
-  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "name", example = "Khanh", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 

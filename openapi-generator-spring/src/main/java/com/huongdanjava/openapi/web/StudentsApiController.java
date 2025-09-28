@@ -1,12 +1,19 @@
-package com.huongdanjava.openapispring.web;
+package com.huongdanjava.openapi.web;
 
-import com.huongdanjava.openapispring.dto.Response;
-import com.huongdanjava.openapispring.dto.Student;
+import com.huongdanjava.openapi.dto.AddNewStudentResponse;
+import com.huongdanjava.openapi.dto.DeleteStudentResponse;
+import com.huongdanjava.openapi.dto.GetAllStudentsResponse;
+import com.huongdanjava.openapi.dto.GetStudentByIdResponse;
+import com.huongdanjava.openapi.dto.InlineObject;
+import com.huongdanjava.openapi.dto.InlineObject1;
+import com.huongdanjava.openapi.dto.Student;
+import com.huongdanjava.openapi.dto.UpdateStudentResponse;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.lang.Nullable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,9 +33,9 @@ import java.util.Map;
 import java.util.Optional;
 import jakarta.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-06-27T14:24:29.472247-04:00[America/New_York]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-09-28T20:02:15.238860+08:00[Asia/Singapore]", comments = "Generator version: 7.15.0")
 @Controller
-@RequestMapping("${openapi.studentInformationManagementSystem.base-path:/api}")
+@RequestMapping("${openapi.studentManagementSystem.base-path:/api}")
 public class StudentsApiController implements StudentsApi {
 
     private final StudentsApiDelegate delegate;

@@ -1,0 +1,173 @@
+openapi: 3.1.0
+info:
+  title: Student Management System
+  version: 1.0.0
+servers:
+  - url: https://localhost:8081/api
+paths:
+  /students:
+    get:
+      operationId: getAllStudents
+      summary: Get all students
+      parameters:
+        - $ref: "./components/parameters/page.yml#/Page"
+        - $ref: "./components/parameters/size.yml#/Size"
+      responses:
+        "200":
+          description: Get all students successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllStudentsResponse'
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+    post:
+      operationId: addNewStudent
+      summary: Add a new student
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Student"
+      responses:
+        "200":
+          description: Add new student successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddNewStudentResponse'
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+  /students/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: Student Id
+        required: true
+        schema:
+          type: string
+    get:
+      operationId: getStudentById
+      summary: Get a student by Id
+      responses:
+        "200":
+          description: Get student information successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetStudentByIdResponse'
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+    put:
+      operationId: updateStudent
+      summary: Update a student
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Student"
+      responses:
+        "200":
+          description: Update student information successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateStudentResponse'
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+    delete:
+      operationId: deleteStudentById
+      summary: Delete a student by Id
+      responses:
+        "200":
+          description: Delete student information successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteStudentResponse'
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+components:
+  schemas:
+    Student:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        code:
+          type: string
+          example: 1234
+        name:
+          type: string
+          example: Khanh
+    GetAllStudentsResponse:
+      type: object
+      allOf:
+        - $ref: './components/schemas/response.yml#/Response'
+      properties:
+        page:
+          type: integer
+          description: Page number
+          example: 1
+        size:
+          type: integer
+          description: Number of items
+          example: 10
+        totalItems:
+          type: integer
+          description: Total items
+          example: 99
+        totalPages:
+          type: integer
+          description: Total pages
+          example: 10
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Student'
+    GetStudentByIdResponse:
+      type: object
+      allOf:
+        - $ref: './components/schemas/response.yml#/Response'
+      properties:
+        data:
+          $ref: '#/components/schemas/Student'
+    AddNewStudentResponse:
+      type: object
+      allOf:
+        - $ref: './components/schemas/response.yml#/Response'
+      properties:
+        data:
+          $ref: '#/components/schemas/Student'
+    UpdateStudentResponse:
+      type: object
+      allOf:
+        - $ref: './components/schemas/response.yml#/Response'
+      properties:
+        data:
+          $ref: '#/components/schemas/Student'
+    DeleteStudentResponse:
+      type: object
+      allOf:
+        - $ref: './components/schemas/response.yml#/Response'
+      example:
+        success: true
+        message: Student deleted!
+  responses:
+    BadRequest:
+      $ref: "./components/responses/400.yml"
+    InternalServerError:
+      $ref: "./components/responses/500.yml"
+        

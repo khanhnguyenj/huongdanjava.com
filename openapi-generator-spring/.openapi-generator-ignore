@@ -23,5 +23,3 @@
 #!docs/README.md
 pom.xml
 src/main/resources/application.properties
-src/main/java/org/openapitools/OpenAPI2SpringBoot.java
-src/main/java/org/openapitools/OpenApiGeneratorApplication.java
