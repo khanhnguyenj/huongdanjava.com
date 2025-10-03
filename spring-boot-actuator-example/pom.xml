@@ -6,16 +6,16 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.0.5</version>
+    <version>3.5.6</version>
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
-  <groupId>com.huongdanjava</groupId>
-  <artifactId>spring-boot-actuator</artifactId>
+  <groupId>com.huongdanjava.springboot</groupId>
+  <artifactId>spring-boot-actuator-example</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>spring-boot-actuator</name>
+  <name>spring-boot-actuator-example</name>
   <description>Demo project for Spring Boot</description>
   <properties>
-    <java.version>17</java.version>
+    <java.version>25</java.version>
   </properties>
   <dependencies>
     <dependency>

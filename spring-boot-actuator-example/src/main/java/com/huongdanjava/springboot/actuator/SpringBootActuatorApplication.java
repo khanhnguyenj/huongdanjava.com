@@ -1,4 +1,4 @@
-package com.huongdanjava.springbootactuator;
+package com.huongdanjava.springboot.actuator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
