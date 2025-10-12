@@ -1,8 +1,19 @@
+server:
+  port: 8081
+
 spring:
   cloud:
     consul:
-      port: '8500'
+      port: 8500
       host: localhost
+      discovery:
+        hostname: host.docker.internal
 
   application:
     name: spring-cloud-consul-service-discovery
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
