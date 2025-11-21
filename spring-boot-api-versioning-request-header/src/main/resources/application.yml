@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: spring-boot-api-versioning-request-header
+
+  mvc:
+    apiversion:
+      use:
+        header: X-API-Version
+      supported: 1, 2
+
+server:
+  port: 8082
+
