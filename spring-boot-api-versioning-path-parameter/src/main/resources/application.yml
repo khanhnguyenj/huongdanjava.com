@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: spring-boot-api-versioning-path-parameter
+
+#  mvc:
+#    apiversion:
+#      use:
+#        path-segment: 0
+#      default: 1.0.0
+
