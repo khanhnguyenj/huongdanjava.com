@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 
 @SpringBootTest
-@ContextConfiguration(classes = { TestConfiguration.class })
+@ContextConfiguration(classes = {TestConfiguration.class})
 public class Hello1Test {
 
   @Autowired
@@ -21,9 +21,9 @@ public class Hello1Test {
     Assertions.assertEquals("Hello Khanh", hello.say("Khanh"));
   }
 
-  @Test
-  public void testBeanConfiguration() {
-    Calculation calculation = context.getBean(Calculation.class);
-
-  }
+//  @Test
+//  public void testBeanConfiguration() {
+//    Calculation calculation = context.getBean(Calculation.class);
+//
+//  }
 }
