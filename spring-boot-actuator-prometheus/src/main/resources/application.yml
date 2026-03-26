@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: spring-boot-actuator-prometheus
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
