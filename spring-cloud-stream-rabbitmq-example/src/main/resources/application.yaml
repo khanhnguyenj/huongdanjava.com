@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: spring-cloud-stream-rabbitmq-example
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  cloud:
+    function:
+      definition: sendSupplier;receiveConsumer
+    stream:
+      bindings:
+        sendSupplier-out-0:
+          destination: message.exchange
+        receiveConsumer-in-0:
+          destination: message.exchange
+          group: huongdanjava
