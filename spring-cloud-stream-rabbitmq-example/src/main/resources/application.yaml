@@ -9,8 +9,8 @@ spring:
     password: guest
 
   cloud:
-    function:
-      definition: sendSupplier;receiveConsumer
+    #    function:
+    #      definition: sendSupplier;receiveConsumer
     stream:
       bindings:
         sendSupplier-out-0:
