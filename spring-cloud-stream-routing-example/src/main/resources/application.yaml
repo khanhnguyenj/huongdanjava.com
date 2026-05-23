@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: spring-cloud-stream-routing-example
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  cloud:
+    function:
+      routing:
+        enabled: true
+      definition: functionRouter
+      routing-expression: "headers['eventType']"
+    stream:
+      bindings:
+        sendMessage:
+          destination: message.exchange
+        functionRouter-in-0:
+          destination: message.exchange
+          group: huongdanjava
