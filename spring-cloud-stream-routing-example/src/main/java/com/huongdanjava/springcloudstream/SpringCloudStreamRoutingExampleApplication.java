@@ -21,7 +21,7 @@ public class SpringCloudStreamRoutingExampleApplication {
   }
 
   @Bean
-  CommandLineRunner sendMessageOnStartup() {
+  CommandLineRunner runner() {
     return args -> {
       Message message = MessageBuilder
           .withPayload("Hello World")
