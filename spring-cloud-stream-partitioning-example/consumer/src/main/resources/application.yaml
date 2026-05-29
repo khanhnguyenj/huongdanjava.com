@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: consumer
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  cloud:
+    stream:
+      bindings:
+        processOrder-in-0:
+          destination: message.exchange
+          group: huongdanjava
+          consumer:
+            partitioned: true
+      instance-count: 3
+
+server:
+  port: 0

@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: producer
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  cloud:
+    stream:
+      bindings:
+        sendMessage:
+          destination: message.exchange
+          producer:
+            partition-key-expression: payload.userId
+            partition-count: 3
+
+logging:
+  level:
+    org.springframework.cloud: TRACE
+
+server:
+  port: 0
