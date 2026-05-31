@@ -5,13 +5,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class MessageStore {
 
-    private String lastMessage;
+  private String lastMessage;
 
-    public void setLastMessage(String message) {
-        this.lastMessage = message;
-    }
+  public void setLastMessage(String message) {
+    this.lastMessage = message;
+  }
 
-    public String getLastMessage() {
-        return lastMessage;
-    }
+  public String getLastMessage() {
+    return lastMessage;
+  }
 }
