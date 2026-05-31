@@ -12,3 +12,26 @@ spring:
               uri: http://localhost:8082
               predicates:
                 - Path=/classes/**
+              filters:
+                - name: CircuitBreaker
+                  args:
+                    name: studentServiceCircuitBreaker
+                    fallbackUri: forward:/fallback/students
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      studentServiceCircuitBreaker:
+        sliding-window-size: 10
+        permitted-number-of-calls-in-half-open-state: 3
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10s
+  timelimiter:
+    instances:
+      studentServiceCircuitBreaker:
+        timeout-duration: 3s
+  retry:
+    instances:
+      studentServiceCircuitBreaker:
+        max-attempts: 3
+        wait-duration: 500ms

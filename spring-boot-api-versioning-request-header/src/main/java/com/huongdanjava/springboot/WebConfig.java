@@ -10,6 +10,7 @@ public class WebConfig implements WebMvcConfigurer {
   @Override
   public void configureApiVersioning(ApiVersionConfigurer configurer) {
     configurer.useRequestHeader("X-Api-Version")
-        .addSupportedVersions("1");
+//        .addSupportedVersions("5", "1.0.2");
+        .setDefaultVersion("1");
   }
 }

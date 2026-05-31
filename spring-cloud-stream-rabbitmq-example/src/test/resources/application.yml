@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    function:
+      definition: receiveConsumer;uppercase
+    stream:
+      bindings:
+        receiveConsumer-in-0:
+          destination: message.exchange
+          group: huongdanjava
+        uppercase-out-0:
+          destination: output.exchange
+        uppercase-in-0:
+          destination: input.exchange
+          group: huongdanjava

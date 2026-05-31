@@ -1,6 +1,12 @@
 services:
   prometheus:
-    image: prom/prometheus
-    container_name: 'prometheus'
+    image: prom/prometheus:v3.6.0
+    healthcheck:
+      test: [ "CMD-SHELL", "wget --quiet --tries=1 --spider http://localhost:9090/-/healthy || exit 1" ]
+      interval: 5s
+      timeout: 1s
+      retries: 10
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
     ports:
       - 9090:9090

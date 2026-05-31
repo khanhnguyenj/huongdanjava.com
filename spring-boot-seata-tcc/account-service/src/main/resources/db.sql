@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS `account`
+(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id VARCHAR(30) UNIQUE NOT NULL,
+    balance DECIMAL
+);
+
+CREATE TABLE IF NOT EXISTS account_freeze (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    xid VARCHAR(128) NOT NULL,
+    user_id VARCHAR(64) NOT NULL,
+    frozen DECIMAL NOT NULL,
+    UNIQUE KEY uk_xid_user (xid, user_id)
+);

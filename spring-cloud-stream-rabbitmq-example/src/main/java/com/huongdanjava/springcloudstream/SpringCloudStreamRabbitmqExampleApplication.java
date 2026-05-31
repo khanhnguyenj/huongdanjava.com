@@ -1,7 +1,7 @@
 package com.huongdanjava.springcloudstream;
 
 import java.util.function.Consumer;
-import java.util.function.Supplier;
+import java.util.function.Function;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -32,9 +32,18 @@ public class SpringCloudStreamRabbitmqExampleApplication {
 //  }
 
   @Bean
-  public Consumer<String> receiveConsumer() {
+  public Consumer<String> receiveConsumer(MessageStore store) {
     return message -> {
+      store.setLastMessage(message);
       System.out.println("Received: " + message);
+    };
+  }
+
+  @Bean
+  public Function<String, String> uppercase() {
+    return message -> {
+      System.out.printf("Received for uppercase: %s%n", message);
+      return message.toUpperCase();
     };
   }
 

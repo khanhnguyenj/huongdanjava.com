@@ -24,4 +24,13 @@ public class HelloController {
         """;
   }
 
+  @GetMapping(value = "/hello", version = "1.2+")
+  public String hello1_2() {
+    return """
+        {
+          "message": "Hello from Huong Dan Java! V1.2+"
+        }
+        """;
+  }
+
 }

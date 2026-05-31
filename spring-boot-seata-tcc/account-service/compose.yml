@@ -1,0 +1,12 @@
+services:
+  mysql:
+    image: 'mysql:latest'
+    volumes:
+      - ./src/main/resources/db.sql:/docker-entrypoint-initdb.d/db.sql
+    environment:
+      - 'MYSQL_DATABASE=mydatabase'
+      - 'MYSQL_PASSWORD=secret'
+      - 'MYSQL_ROOT_PASSWORD=verysecret'
+      - 'MYSQL_USER=myuser'
+    ports:
+      - '3316:3306'

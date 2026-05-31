@@ -1,9 +1,7 @@
 package com.huongdanjava.feign;
 
 import feign.Feign;
-import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
-import java.net.http.HttpHeaders;
 import java.util.HashMap;
 import java.util.Map;
 
