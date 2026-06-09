@@ -1,16 +1,16 @@
 services:
   postgresql:
-    image: postgres:15.17
+    image: postgres:18.4
     environment:
       POSTGRES_USER: khanh
       POSTGRES_PASSWORD: 123456
     volumes:
-      - ./postgresql_data:/var/lib/postgresql/data
+      - ./postgresql_data:/var/lib/postgresql
     ports:
       - 5431:5432
 
   pgadmin:
-    image: dpage/pgadmin4:9.14.0
+    image: dpage/pgadmin4:9.15.0
     environment:
       PGADMIN_DEFAULT_EMAIL: huongdanjava.com@gmail.com
       PGADMIN_DEFAULT_PASSWORD: 123456
