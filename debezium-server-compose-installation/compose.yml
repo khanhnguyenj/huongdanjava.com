@@ -1,0 +1,72 @@
+services:
+  debezium-server:
+    image: quay.io/debezium/server:3.5.2.Final
+    depends_on:
+      - postgres
+      - kafka
+    volumes:
+      - ./debezium_data:/debezium/data
+      - ./conf:/debezium/config
+    ports:
+      - 8080:8080
+
+  postgres:
+    image: 'postgres:18.4'
+    volumes:
+      - ./postgresql_data:/var/lib/postgresql
+      - ./conf/db.sql:/docker-entrypoint-initdb.d/db.sql
+    environment:
+      - POSTGRES_DB=debezium_example
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_USER=khanh
+    command:
+      - postgres
+      - -c
+      - wal_level=logical
+      - -c
+      - shared_preload_libraries=pgoutput
+    ports:
+      - '5430:5432'
+
+  pgadmin:
+    image: dpage/pgadmin4:9.15.0
+    environment:
+      PGADMIN_DEFAULT_EMAIL: huongdanjava.com@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: 123456
+    volumes:
+      - ./pgadmin_data:/var/lib/pgadmin
+    ports:
+      - 8888:80
+
+  kafka:
+    image: confluentinc/cp-kafka:8.2.1
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: 'broker,controller'
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      CLUSTER_ID: 'MkU3OEVBNTcwNTJENDM2Qk'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka:29093'
+      KAFKA_LISTENERS: 'PLAINTEXT://kafka:29092,CONTROLLER://kafka:29093,PLAINTEXT_HOST://0.0.0.0:9092'
+      KAFKA_INTER_BROKER_LISTENER_NAME: 'PLAINTEXT'
+      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
+    volumes:
+      - ./kafka_data:/var/lib/kafka/data
+    healthcheck:
+      test: [ "CMD-SHELL", "kafka-topics --bootstrap-server localhost:9092 --list" ]
+      interval: 5s
+      retries: 10
+    ports:
+      - 9092:9092
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:v0.7.2
+    depends_on:
+      - kafka
+    ports:
+      - 8082:8080
+    environment:
+      KAFKA_CLUSTERS_0_NAME: kafka
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
+      DYNAMIC_CONFIG_ENABLED: 'true'
