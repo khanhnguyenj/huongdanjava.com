@@ -1,7 +1,0 @@
-spring:
-  application:
-    name: outbox-pattern-service-1
-server:
-  port: 8081
-
-
