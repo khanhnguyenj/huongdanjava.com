@@ -4,6 +4,12 @@ services:
     environment:
       POSTGRES_USER: khanh
       POSTGRES_PASSWORD: 123456
+    command:
+      - postgres
+      - -c
+      - wal_level=logical
+      - -c
+      - shared_preload_libraries=pgoutput
     volumes:
       - ./postgresql_data:/var/lib/postgresql
     ports:
