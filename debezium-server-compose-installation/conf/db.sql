@@ -1,4 +1,4 @@
 CREATE TABLE student (
-    id   UUID PRIMARY KEY,
+    id   bigint PRIMARY KEY,
     name VARCHAR(100)
 );
