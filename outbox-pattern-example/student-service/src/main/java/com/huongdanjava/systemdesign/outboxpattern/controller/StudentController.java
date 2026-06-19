@@ -1,6 +1,7 @@
 package com.huongdanjava.systemdesign.outboxpattern.controller;
 
 import com.huongdanjava.systemdesign.outboxpattern.controller.dto.AddNewStudentRequest;
+import com.huongdanjava.systemdesign.outboxpattern.controller.dto.AddNewStudentResponse;
 import com.huongdanjava.systemdesign.outboxpattern.repository.OutboxRepository;
 import com.huongdanjava.systemdesign.outboxpattern.repository.StudentRepository;
 import com.huongdanjava.systemdesign.outboxpattern.repository.entity.Outbox;
@@ -28,7 +29,7 @@ public class StudentController {
 
   @PostMapping("/students")
   @Transactional
-  ResponseEntity<String> addNewStudent(@RequestBody AddNewStudentRequest request) {
+  ResponseEntity<AddNewStudentResponse> addNewStudent(@RequestBody AddNewStudentRequest request) {
     Student student = new Student();
     student.setName(request.getName());
     student.setId(UUID.randomUUID());
@@ -42,7 +43,7 @@ public class StudentController {
     outbox.setPayload(om.writeValueAsString(student));
     outboxRepository.save(outbox);
 
-    return ResponseEntity.ok("Added new student");
+    return ResponseEntity.ok(new AddNewStudentResponse(true, "Added new student"));
   }
 
 }
