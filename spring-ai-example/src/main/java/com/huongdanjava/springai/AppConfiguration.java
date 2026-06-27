@@ -12,7 +12,7 @@ public class AppConfiguration {
   @Bean
   OpenAiChatOptions chatOptions() {
     return OpenAiChatOptions.builder()
-        .apiKey("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")
+        .apiKey("YOUR_OPENAI_API_KEY")
         .model(com.openai.models.ChatModel.GPT_5_NANO.asString())
         .build();
   }
