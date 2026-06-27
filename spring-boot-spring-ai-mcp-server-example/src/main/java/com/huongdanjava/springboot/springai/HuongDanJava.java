@@ -10,7 +10,9 @@ public class HuongDanJava {
 
   private Map<String, Integer> users = new HashMap<>();
 
-  @Tool(name = "addUser", description = "Add a user with an age to the list. Need to specify user name and age of user")
+  @Tool(
+      name = "addUser",
+      description = "Add a user with an age to the list. Need to specify user name and age of user")
   public String addUser(String name, int age) {
     users.put(name, age);
 

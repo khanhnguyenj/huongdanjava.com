@@ -18,5 +18,4 @@ public class SpringBootSpringAiMcpServerApplication {
   List<ToolCallback> toolCallbacks(HuongDanJava huongDanJava) {
     return List.of(ToolCallbacks.from(huongDanJava));
   }
-
 }
