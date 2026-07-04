@@ -20,14 +20,14 @@ import jakarta.annotation.Generated;
  * GetStudentByIdResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-09-28T20:23:53.641444+08:00[Asia/Singapore]", comments = "Generator version: 7.15.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-07-04T11:28:38.966332+07:00[Asia/Ho_Chi_Minh]", comments = "Generator version: 7.23.0")
 public class GetStudentByIdResponse {
-
-  private @Nullable Student data;
 
   private Boolean success;
 
   private @Nullable String message;
+
+  private @Nullable Student data;
 
   public GetStudentByIdResponse() {
     super();
@@ -38,26 +38,6 @@ public class GetStudentByIdResponse {
    */
   public GetStudentByIdResponse(Boolean success) {
     this.success = success;
-  }
-
-  public GetStudentByIdResponse data(@Nullable Student data) {
-    this.data = data;
-    return this;
-  }
-
-  /**
-   * Get data
-   * @return data
-   */
-  @Valid 
-  @Schema(name = "data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("data")
-  public @Nullable Student getData() {
-    return data;
-  }
-
-  public void setData(@Nullable Student data) {
-    this.data = data;
   }
 
   public GetStudentByIdResponse success(Boolean success) {
@@ -76,6 +56,7 @@ public class GetStudentByIdResponse {
     return success;
   }
 
+  @JsonProperty("success")
   public void setSuccess(Boolean success) {
     this.success = success;
   }
@@ -96,8 +77,30 @@ public class GetStudentByIdResponse {
     return message;
   }
 
+  @JsonProperty("message")
   public void setMessage(@Nullable String message) {
     this.message = message;
+  }
+
+  public GetStudentByIdResponse data(@Nullable Student data) {
+    this.data = data;
+    return this;
+  }
+
+  /**
+   * Get data
+   * @return data
+   */
+  @Valid 
+  @Schema(name = "data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("data")
+  public @Nullable Student getData() {
+    return data;
+  }
+
+  @JsonProperty("data")
+  public void setData(@Nullable Student data) {
+    this.data = data;
   }
 
   @Override
@@ -109,23 +112,23 @@ public class GetStudentByIdResponse {
       return false;
     }
     GetStudentByIdResponse getStudentByIdResponse = (GetStudentByIdResponse) o;
-    return Objects.equals(this.data, getStudentByIdResponse.data) &&
-        Objects.equals(this.success, getStudentByIdResponse.success) &&
-        Objects.equals(this.message, getStudentByIdResponse.message);
+    return Objects.equals(this.success, getStudentByIdResponse.success) &&
+        Objects.equals(this.message, getStudentByIdResponse.message) &&
+        Objects.equals(this.data, getStudentByIdResponse.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, success, message);
+    return Objects.hash(success, message, data);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetStudentByIdResponse {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -134,11 +137,8 @@ public class GetStudentByIdResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

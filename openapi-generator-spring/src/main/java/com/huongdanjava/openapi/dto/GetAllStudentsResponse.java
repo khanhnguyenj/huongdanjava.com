@@ -23,8 +23,12 @@ import jakarta.annotation.Generated;
  * GetAllStudentsResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-09-28T20:23:53.641444+08:00[Asia/Singapore]", comments = "Generator version: 7.15.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-07-04T11:28:38.966332+07:00[Asia/Ho_Chi_Minh]", comments = "Generator version: 7.23.0")
 public class GetAllStudentsResponse {
+
+  private Boolean success;
+
+  private @Nullable String message;
 
   private @Nullable Integer page;
 
@@ -34,12 +38,7 @@ public class GetAllStudentsResponse {
 
   private @Nullable Integer totalPages;
 
-  @Valid
   private List<@Valid Student> data = new ArrayList<>();
-
-  private Boolean success;
-
-  private @Nullable String message;
 
   public GetAllStudentsResponse() {
     super();
@@ -50,6 +49,48 @@ public class GetAllStudentsResponse {
    */
   public GetAllStudentsResponse(Boolean success) {
     this.success = success;
+  }
+
+  public GetAllStudentsResponse success(Boolean success) {
+    this.success = success;
+    return this;
+  }
+
+  /**
+   * Get success
+   * @return success
+   */
+  @NotNull 
+  @Schema(name = "success", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("success")
+  public Boolean getSuccess() {
+    return success;
+  }
+
+  @JsonProperty("success")
+  public void setSuccess(Boolean success) {
+    this.success = success;
+  }
+
+  public GetAllStudentsResponse message(@Nullable String message) {
+    this.message = message;
+    return this;
+  }
+
+  /**
+   * Get message
+   * @return message
+   */
+  
+  @Schema(name = "message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("message")
+  public @Nullable String getMessage() {
+    return message;
+  }
+
+  @JsonProperty("message")
+  public void setMessage(@Nullable String message) {
+    this.message = message;
   }
 
   public GetAllStudentsResponse page(@Nullable Integer page) {
@@ -68,6 +109,7 @@ public class GetAllStudentsResponse {
     return page;
   }
 
+  @JsonProperty("page")
   public void setPage(@Nullable Integer page) {
     this.page = page;
   }
@@ -88,6 +130,7 @@ public class GetAllStudentsResponse {
     return size;
   }
 
+  @JsonProperty("size")
   public void setSize(@Nullable Integer size) {
     this.size = size;
   }
@@ -108,6 +151,7 @@ public class GetAllStudentsResponse {
     return totalItems;
   }
 
+  @JsonProperty("totalItems")
   public void setTotalItems(@Nullable Integer totalItems) {
     this.totalItems = totalItems;
   }
@@ -128,6 +172,7 @@ public class GetAllStudentsResponse {
     return totalPages;
   }
 
+  @JsonProperty("totalPages")
   public void setTotalPages(@Nullable Integer totalPages) {
     this.totalPages = totalPages;
   }
@@ -156,48 +201,9 @@ public class GetAllStudentsResponse {
     return data;
   }
 
+  @JsonProperty("data")
   public void setData(List<@Valid Student> data) {
     this.data = data;
-  }
-
-  public GetAllStudentsResponse success(Boolean success) {
-    this.success = success;
-    return this;
-  }
-
-  /**
-   * Get success
-   * @return success
-   */
-  @NotNull 
-  @Schema(name = "success", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("success")
-  public Boolean getSuccess() {
-    return success;
-  }
-
-  public void setSuccess(Boolean success) {
-    this.success = success;
-  }
-
-  public GetAllStudentsResponse message(@Nullable String message) {
-    this.message = message;
-    return this;
-  }
-
-  /**
-   * Get message
-   * @return message
-   */
-  
-  @Schema(name = "message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("message")
-  public @Nullable String getMessage() {
-    return message;
-  }
-
-  public void setMessage(@Nullable String message) {
-    this.message = message;
   }
 
   @Override
@@ -209,31 +215,31 @@ public class GetAllStudentsResponse {
       return false;
     }
     GetAllStudentsResponse getAllStudentsResponse = (GetAllStudentsResponse) o;
-    return Objects.equals(this.page, getAllStudentsResponse.page) &&
+    return Objects.equals(this.success, getAllStudentsResponse.success) &&
+        Objects.equals(this.message, getAllStudentsResponse.message) &&
+        Objects.equals(this.page, getAllStudentsResponse.page) &&
         Objects.equals(this.size, getAllStudentsResponse.size) &&
         Objects.equals(this.totalItems, getAllStudentsResponse.totalItems) &&
         Objects.equals(this.totalPages, getAllStudentsResponse.totalPages) &&
-        Objects.equals(this.data, getAllStudentsResponse.data) &&
-        Objects.equals(this.success, getAllStudentsResponse.success) &&
-        Objects.equals(this.message, getAllStudentsResponse.message);
+        Objects.equals(this.data, getAllStudentsResponse.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(page, size, totalItems, totalPages, data, success, message);
+    return Objects.hash(success, message, page, size, totalItems, totalPages, data);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetAllStudentsResponse {\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    page: ").append(toIndentedString(page)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("    totalItems: ").append(toIndentedString(totalItems)).append("\n");
     sb.append("    totalPages: ").append(toIndentedString(totalPages)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -242,11 +248,8 @@ public class GetAllStudentsResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

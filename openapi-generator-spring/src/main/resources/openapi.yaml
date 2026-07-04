@@ -169,14 +169,14 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/inline_object_1"
+            $ref: "#/components/schemas/inline_object"
       description: Internal Server Error
   schemas:
     Student:
       example:
+        id: 1
         code: 1234
         name: Khanh
-        id: 1
       properties:
         id:
           example: 1
@@ -197,34 +197,44 @@ components:
             type: string
         required:
         - success
+      - properties:
+          page:
+            description: Page number
+            example: 1
+            type: integer
+          size:
+            description: Number of items
+            example: 10
+            type: integer
+          totalItems:
+            description: Total items
+            example: 99
+            type: integer
+          totalPages:
+            description: Total pages
+            example: 10
+            type: integer
+          data:
+            items:
+              $ref: "#/components/schemas/Student"
+            type: array
+            default: null
+        type: object
+        example: null
       example:
-        totalItems: 99
-        size: 10
-        data:
-        - code: 1234
-          name: Khanh
-          id: 1
-        - code: 1234
-          name: Khanh
-          id: 1
-        totalPages: 10
+        success: true
+        message: message
         page: 1
-      properties:
-        page:
-          description: Page number
-          example: 1
-        size:
-          description: Number of items
-          example: 10
-        totalItems:
-          description: Total items
-          example: 99
-        totalPages:
-          description: Total pages
-          example: 10
+        size: 10
+        totalItems: 99
+        totalPages: 10
         data:
-          items:
-            $ref: "#/components/schemas/Student"
+        - id: 1
+          code: 1234
+          name: Khanh
+        - id: 1
+          code: 1234
+          name: Khanh
     GetStudentByIdResponse:
       allOf:
       - properties:
@@ -234,14 +244,18 @@ components:
             type: string
         required:
         - success
+      - properties:
+          data:
+            $ref: "#/components/schemas/Student"
+        type: object
+        example: null
       example:
+        success: true
+        message: message
         data:
+          id: 1
           code: 1234
           name: Khanh
-          id: 1
-      properties:
-        data:
-          $ref: "#/components/schemas/Student"
     AddNewStudentResponse:
       allOf:
       - properties:
@@ -251,14 +265,18 @@ components:
             type: string
         required:
         - success
+      - properties:
+          data:
+            $ref: "#/components/schemas/Student"
+        type: object
+        example: null
       example:
+        success: true
+        message: message
         data:
+          id: 1
           code: 1234
           name: Khanh
-          id: 1
-      properties:
-        data:
-          $ref: "#/components/schemas/Student"
     UpdateStudentResponse:
       allOf:
       - properties:
@@ -268,14 +286,18 @@ components:
             type: string
         required:
         - success
+      - properties:
+          data:
+            $ref: "#/components/schemas/Student"
+        type: object
+        example: null
       example:
+        success: true
+        message: message
         data:
+          id: 1
           code: 1234
           name: Khanh
-          id: 1
-      properties:
-        data:
-          $ref: "#/components/schemas/Student"
     DeleteStudentResponse:
       allOf:
       - properties:
@@ -300,15 +322,3 @@ components:
       example:
         success: false
         message: Required fields are missing
-    inline_object_1:
-      allOf:
-      - properties:
-          success:
-            type: boolean
-          message:
-            type: string
-        required:
-        - success
-      example:
-        success: false
-        message: Internal Server Error

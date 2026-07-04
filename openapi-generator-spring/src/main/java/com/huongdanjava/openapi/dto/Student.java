@@ -19,7 +19,7 @@ import jakarta.annotation.Generated;
  * Student
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-09-28T20:23:53.641444+08:00[Asia/Singapore]", comments = "Generator version: 7.15.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-07-04T11:28:38.966332+07:00[Asia/Ho_Chi_Minh]", comments = "Generator version: 7.23.0")
 public class Student {
 
   private @Nullable Long id;
@@ -44,6 +44,7 @@ public class Student {
     return id;
   }
 
+  @JsonProperty("id")
   public void setId(@Nullable Long id) {
     this.id = id;
   }
@@ -64,6 +65,7 @@ public class Student {
     return code;
   }
 
+  @JsonProperty("code")
   public void setCode(@Nullable String code) {
     this.code = code;
   }
@@ -84,6 +86,7 @@ public class Student {
     return name;
   }
 
+  @JsonProperty("name")
   public void setName(@Nullable String name) {
     this.name = name;
   }
@@ -122,11 +125,8 @@ public class Student {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 
