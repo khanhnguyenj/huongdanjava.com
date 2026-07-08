@@ -1,0 +1,7 @@
+BadRequest:
+  type: object
+  allOf:
+    - $ref: './response.yml#/Response'
+  example:
+    success: false
+    message: Required fields are missing

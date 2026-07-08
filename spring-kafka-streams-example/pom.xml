@@ -26,6 +26,12 @@
       <artifactId>kafka-streams</artifactId>
       <version>4.3.0</version>
     </dependency>
+
+<!--    <dependency>-->
+<!--      <groupId>org.apache.kafka</groupId>-->
+<!--      <artifactId>kafka-clients</artifactId>-->
+<!--      <version>4.3.0</version>-->
+<!--    </dependency>-->
   </dependencies>
 
 </project>

@@ -1,0 +1,94 @@
+openapi: 3.1.0
+info:
+  title: Order Service
+  version: 1.0.0
+servers:
+- url: https://localhost:8081/api
+paths:
+  /orders:
+    post:
+      operationId: addNewOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Order"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddNewOrderResponse"
+          description: Add new order successfully
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+      summary: Add a new order
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+components:
+  responses:
+    BadRequest:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/inline_object"
+      description: Bad Request
+    InternalServerError:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/inline_object"
+      description: Internal Server Error
+  schemas:
+    Order:
+      example:
+        id: 1
+        code: 1234
+        name: Khanh
+      properties:
+        id:
+          example: 1
+          format: int64
+          type: integer
+        code:
+          example: 1234
+          type: string
+        name:
+          example: Khanh
+          type: string
+    AddNewOrderResponse:
+      allOf:
+      - properties:
+          success:
+            type: boolean
+          message:
+            type: string
+        required:
+        - success
+      - properties:
+          data:
+            $ref: "#/components/schemas/Order"
+        type: object
+        example: null
+      example:
+        success: true
+        message: message
+        data:
+          id: 1
+          code: 1234
+          name: Khanh
+    inline_object:
+      allOf:
+      - properties:
+          success:
+            type: boolean
+          message:
+            type: string
+        required:
+        - success
+      example:
+        success: false
+        message: Required fields are missing
