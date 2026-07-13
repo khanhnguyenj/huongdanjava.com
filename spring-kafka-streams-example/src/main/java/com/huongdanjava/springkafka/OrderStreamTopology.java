@@ -36,46 +36,42 @@ public class OrderStreamTopology {
   //    return orders;
   //  }
 
-  //  @Bean
-  //  public KStream<String, String> orders(StreamsBuilder builder) {
-  //    KTable<String, String> customers = builder.table("customers");
+  //    @Bean
+  //    public KStream<String, String> orders(StreamsBuilder builder) {
+  //      KTable<String, String> customers = builder.table("customers");
   //
-  //    KStream<String, String> orders = builder.stream("orders");
+  //      KStream<String, String> orders = builder.stream("orders");
   //
-  //    orders
-  //        .join(
-  //            customers,
-  //            (ValueJoiner<String, String, Object>)
-  //                (orderName, customerName) -> {
-  //                  System.out.println(
-  //                      "Joining order: " + orderName + " with customer: " + customerName);
-  //                  return String.format("%s ordered %s", customerName, orderName);
-  //                },
-  //            Joined.with(Serdes.String(), Serdes.String(), Serdes.String()))
-  //        .to("enriched-orders");
+  //      orders
+  //          .join(
+  //              customers,
+  //              (ValueJoiner<String, String, Object>)
+  //                  (orderName, customerName) -> {
+  //                    System.out.println(
+  //                        "Joining order: " + orderName + " with customer: " + customerName);
+  //                    return String.format("%s ordered %s", customerName, orderName);
+  //                  },
+  //              Joined.with(Serdes.String(), Serdes.String(), Serdes.String()))
+  //          .to("enriched-orders");
   //
-  //    return orders;
-  //  }
+  //      return orders;
+  //    }
 
   @Bean
-  public KStream<String, String> orderStream(StreamsBuilder builder) {
-    try {
-      KStream<String, String> customers = builder.stream("customers");
-      KStream<String, String> orders = builder.stream("orders");
+  public KStream<String, String> customers(StreamsBuilder builder) {
+    KStream<String, String> customers = builder.stream("customers");
 
-      customers
-          .join(
-              orders,
-              (ValueJoiner<String, String, String>)
-                  (customer, order) -> String.format("Customer %s ordered %s", customer, order),
-              JoinWindows.ofTimeDifferenceWithNoGrace(Duration.ofMinutes(100)),
-              StreamJoined.with(Serdes.String(), Serdes.String(), Serdes.String()))
-          .to("enriched-orders");
+    KStream<String, String> orders = builder.stream("orders");
 
-      return customers;
-    } catch (Exception e) {
-      e.printStackTrace();
-      throw new RuntimeException(e);
-    }
+    customers
+        .join(
+            orders,
+            (ValueJoiner<String, String, String>)
+                (customer, order) -> String.format("Customer %s ordered %s", customer, order),
+            JoinWindows.ofTimeDifferenceAndGrace(Duration.ofSeconds(25), Duration.ofSeconds(150)),
+            StreamJoined.with(Serdes.String(), Serdes.String(), Serdes.String()))
+        .to("enriched-orders");
+
+    return customers;
   }
 }
