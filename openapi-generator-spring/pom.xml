@@ -64,6 +64,7 @@
               <configOptions>
                 <delegatePattern>true</delegatePattern>
                 <useSpringBoot4>true</useSpringBoot4>
+                <interfaceOnly>true</interfaceOnly>
               </configOptions>
             </configuration>
           </execution>

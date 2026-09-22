@@ -1,0 +1,84 @@
+openapi: 3.1.2
+info:
+  title: Payment Service
+  version: 1.0.0
+servers:
+  - url: https://localhost:8083/api
+paths:
+  /payments:
+    post:
+      operationId: payment
+      summary: Payment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PaymentRequest"
+      responses:
+        "200":
+          description: Payment successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+components:
+  schemas:
+    PaymentRequest:
+      type: object
+      required:
+        - orderNumber
+        - customerId
+        - amount
+        - currency
+        - paymentMethod
+      properties:
+        sagaId:
+          type: string
+          format: uuid
+        orderNumber:
+          type: string
+          format: uuid
+        customerId:
+          type: integer
+        amount:
+          type: number
+        currency:
+          type: string
+        paymentMethod:
+          type: string
+        simulateFailure:
+          type: boolean
+
+    PaymentResponse:
+      type: object
+      allOf:
+        - $ref: './components/schemas/response.yml#/Response'
+      properties:
+        data:
+          $ref: '#/components/schemas/PaymentResponseDto'
+
+    PaymentResponseDto:
+      type: object
+      required:
+        - paymentId
+        - orderNumber
+      properties:
+        paymentId:
+          type: integer
+        sagaId:
+          type: string
+          format: uuid
+        orderNumber:
+          type: string
+          format: uuid
+
+  responses:
+    BadRequest:
+      $ref: "./components/responses/400.yml"
+    InternalServerError:
+      $ref: "./components/responses/500.yml"

@@ -4,12 +4,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.huongdanjava</groupId>
+  <groupId>com.huongdanjava.springjdbc</groupId>
   <artifactId>spring-jdbc-transaction-management</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <properties>
-    <spring-framework.version>5.3.19</spring-framework.version>
+    <spring-framework.version>7.0.9</spring-framework.version>
   </properties>
 
   <dependencies>
@@ -29,9 +29,9 @@
       <version>${spring-framework.version}</version>
     </dependency>
     <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.28</version>
+      <groupId>com.mysql</groupId>
+      <artifactId>mysql-connector-j</artifactId>
+      <version>26.7.0</version>
     </dependency>
   </dependencies>
 </project>

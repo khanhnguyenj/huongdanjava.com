@@ -1,0 +1,12 @@
+ValidationError:
+  type: object
+  required:
+    - field
+    - message
+  properties:
+    field:
+      type: string
+      example: studentId
+    message:
+      type: string
+      example: must not be null

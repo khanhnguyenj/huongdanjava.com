@@ -1,0 +1,70 @@
+@startuml
+title Saga Pattern - Failure and Compensation
+
+actor Client
+
+participant "Order Service" as Order
+participant "Saga Orchestrator" as Saga
+participant "Stock Service" as Stock
+participant "Payment Service" as Payment
+
+database "Order DB" as OrderDB
+database "Saga DB" as SagaDB
+database "Stock DB" as StockDB
+database "Payment DB" as PaymentDB
+
+Client -> Order: POST /orders
+
+Order -> OrderDB: Create Order\nstatus = PENDING
+OrderDB --> Order: Order created
+
+Order -> Saga: execute(orderId)
+
+Saga -> SagaDB: Create Saga\nstatus = STARTED
+SagaDB --> Saga: Saga created
+
+Saga -> SagaDB: status = RUNNING\nstep = RESERVE_STOCK
+
+== Forward Transaction ==
+
+Saga -> Stock: POST /stock-reservations
+Stock -> StockDB: Reserve stock
+StockDB --> Stock: Stock reserved
+Stock --> Saga: SUCCESS
+
+Saga -> SagaDB: Record\nRESERVE_STOCK = SUCCESS
+
+Saga -> SagaDB: step = PROCESS_PAYMENT
+
+Saga -> Payment: POST /payments
+Payment -> PaymentDB: Process payment
+PaymentDB --> Payment: Payment failed
+Payment --> Saga: FAILED
+
+Saga -> SagaDB: Record\nPROCESS_PAYMENT = FAILED
+
+== Compensation ==
+
+Saga -> SagaDB: status = COMPENSATING
+
+Saga -> SagaDB: step = RELEASE_STOCK
+
+Saga -> Stock: POST /stock-reservations/release
+Stock -> StockDB: Release reserved stock
+StockDB --> Stock: Stock released
+Stock --> Saga: SUCCESS
+
+Saga -> SagaDB: Record\nRELEASE_STOCK = SUCCESS
+
+Saga -> SagaDB: step = CANCEL_ORDER
+
+Saga -> OrderDB: Update Order\nstatus = CANCELLED
+
+Saga -> SagaDB: Record\nCANCEL_ORDER = SUCCESS
+
+Saga -> SagaDB: status = CANCELLED
+
+Saga --> Order: Saga cancelled
+Order --> Client: Order cancelled
+
+@enduml

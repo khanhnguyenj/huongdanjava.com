@@ -1,0 +1,103 @@
+openapi: 3.1.2
+info:
+  title: Stock Service
+  version: 1.0.0
+servers:
+  - url: https://localhost:8082/api
+paths:
+  /stock-reservations:
+    post:
+      operationId: reserveStock
+      summary: Reserve stock
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StockReservationRequest"
+      responses:
+        "200":
+          description: Reserve stock successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockReservationResponse'
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+  /stock-reservations/release:
+    post:
+      operationId: releaseStock
+      summary: Release stock
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StockReleaseRequest"
+      responses:
+        "204":
+          description: Reserve stock successfully
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+components:
+  schemas:
+    StockReservationDto:
+      type: object
+      required:
+        - orderNumber
+        - items
+      properties:
+        sagaId:
+          type: string
+          format: uuid
+        orderNumber:
+          type: string
+          format: uuid
+        status:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/StockItemDto"
+          minItems: 1
+
+    StockItemDto:
+      type: object
+      required:
+        - productId
+        - quantity
+      properties:
+        productId:
+          type: integer
+        quantity:
+          type: integer
+
+    StockReservationRequest:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/StockReservationDto'
+
+    StockReservationResponse:
+      type: object
+      allOf:
+        - $ref: './components/schemas/response.yml#/Response'
+      properties:
+        data:
+          $ref: '#/components/schemas/StockReservationDto'
+
+    StockReleaseRequest:
+      type: object
+      properties:
+        sagaId:
+          type: string
+          format: uuid
+
+  responses:
+    BadRequest:
+      $ref: "./components/responses/400.yml"
+    InternalServerError:
+      $ref: "./components/responses/500.yml"

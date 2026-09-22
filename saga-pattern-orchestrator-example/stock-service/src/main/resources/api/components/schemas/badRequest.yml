@@ -1,0 +1,12 @@
+BadRequest:
+  type: object
+  allOf:
+    - $ref: './response.yml#/Response'
+  properties:
+    data:
+      type: array
+      items:
+        $ref: './validationError.yml#/ValidationError'
+  example:
+    success: false
+    message: Required fields are missing

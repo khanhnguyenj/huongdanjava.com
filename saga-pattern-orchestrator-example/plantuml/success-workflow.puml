@@ -1,0 +1,51 @@
+@startuml
+title Saga Pattern - Successful Flow
+
+actor Client
+
+participant "Order Service" as Order
+participant "Saga Orchestrator" as Saga
+participant "Stock Service" as Stock
+participant "Payment Service" as Payment
+
+database "Order DB" as OrderDB
+database "Saga DB" as SagaDB
+database "Stock DB" as StockDB
+database "Payment DB" as PaymentDB
+
+Client -> Order: POST /orders
+
+Order -> OrderDB: Create Order\nstatus = PENDING
+OrderDB --> Order: Order created
+
+Order -> Saga: execute(orderId)
+
+Saga -> SagaDB: Create Saga\nstatus = STARTED
+SagaDB --> Saga: Saga created
+
+Saga -> SagaDB: status = RUNNING\nstep = RESERVE_STOCK
+
+Saga -> Stock: POST /stock-reservations
+Stock -> StockDB: Reserve stock
+StockDB --> Stock: Reserved
+Stock --> Saga: SUCCESS
+
+Saga -> SagaDB: Record\nRESERVE_STOCK = SUCCESS
+
+Saga -> SagaDB: step = PROCESS_PAYMENT
+
+Saga -> Payment: POST /payments
+Payment -> PaymentDB: Process payment
+PaymentDB --> Payment: Payment successful
+Payment --> Saga: SUCCESS
+
+Saga -> SagaDB: Record\nPROCESS_PAYMENT = SUCCESS
+
+Saga -> OrderDB: Update Order\nstatus = CONFIRMED
+
+Saga -> SagaDB: status = COMPLETED
+
+Saga --> Order: Saga completed
+Order --> Client: 201 Created
+
+@enduml

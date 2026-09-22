@@ -1,0 +1,96 @@
+openapi: 3.1.0
+info:
+  title: Common
+  version: 1.0.0
+
+components:
+  schemas:
+    #    Stock Service
+    StockReservationDto:
+      type: object
+      properties:
+        sagaId:
+          type: string
+          format: uuid
+        orderNumber:
+          type: string
+          format: uuid
+        status:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/StockItemDto"
+
+    StockItemDto:
+      type: object
+      properties:
+        productId:
+          type: integer
+        quantity:
+          type: integer
+
+    StockReservationRequest:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/StockReservationDto'
+
+    StockReservationResponse:
+      type: object
+      allOf:
+        - $ref: './components/schemas/response.yml#/Response'
+      properties:
+        data:
+          $ref: '#/components/schemas/StockReservationDto'
+
+    StockReleaseRequest:
+      type: object
+      properties:
+        sagaId:
+          type: string
+          format: uuid
+
+    #    Payment Service
+    PaymentRequest:
+      type: object
+      properties:
+        sagaId:
+          type: string
+          format: uuid
+        orderId:
+          type: integer
+        customerId:
+          type: integer
+        amount:
+          type: number
+        currency:
+          type: string
+        paymentMethod:
+          type: string
+        simulateFailure:
+          type: boolean
+
+    PaymentResponse:
+      type: object
+      allOf:
+        - $ref: './components/schemas/response.yml#/Response'
+      properties:
+        data:
+          $ref: '#/components/schemas/PaymentResponseDto'
+
+    PaymentResponseDto:
+      type: object
+      properties:
+        paymentId:
+          type: integer
+        sagaId:
+          type: string
+          format: uuid
+        orderId:
+          type: integer
+
+  responses:
+    BadRequest:
+      $ref: "./components/responses/400.yml"
+    InternalServerError:
+      $ref: "./components/responses/500.yml"
