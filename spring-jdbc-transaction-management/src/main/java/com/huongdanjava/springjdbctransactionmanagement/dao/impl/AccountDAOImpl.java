@@ -13,26 +13,29 @@ import com.huongdanjava.springjdbctransactionmanagement.dao.AccountDAO;
 @Repository
 public class AccountDAOImpl implements AccountDAO {
 
-  @Autowired
-  private JdbcTemplate jdbcTemplate;
+  @Autowired private JdbcTemplate jdbcTemplate;
 
   public BigDecimal getCurrentAmount(int id) {
-    String sql = "SELECT amount FROM account WHERE id=" + id;
+    String sql = "SELECT amount FROM account WHERE id=?";
 
-    return jdbcTemplate.query(sql, new ResultSetExtractor<BigDecimal>() {
-      public BigDecimal extractData(ResultSet resultSet) throws SQLException, DataAccessException {
-        if (resultSet.next()) {
-          return BigDecimal.valueOf(resultSet.getInt("amount"));
-        }
+    return jdbcTemplate.query(
+        sql,
+        new Object[] {id},
+        new ResultSetExtractor<BigDecimal>() {
+          public BigDecimal extractData(ResultSet resultSet)
+              throws SQLException, DataAccessException {
+            if (resultSet.next()) {
+              return resultSet.getBigDecimal("amount");
+            }
 
-        return BigDecimal.ZERO;
-      }
-    });
+            return BigDecimal.ZERO;
+          }
+        });
   }
 
   public void updateAmount(int id, BigDecimal amount) {
-    String sql = String.format("UPDATE account SET amount=%f WHERE id=%d", amount, id);
+    String sql = "UPDATE account SET amount=? WHERE id=?";
 
-    jdbcTemplate.execute(sql);
+    jdbcTemplate.update(sql, amount, id);
   }
 }
