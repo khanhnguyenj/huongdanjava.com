@@ -1,4 +1,0 @@
-NotFound:
-  type: object
-  allOf:
-    - $ref: './response.yml#/Response'

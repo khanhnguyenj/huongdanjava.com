@@ -1,4 +1,0 @@
-Forbidden:
-  type: object
-  allOf:
-    - $ref: './response.yml#/Response'
