@@ -1,0 +1,20 @@
+spring:
+  application.:
+    name: spring-boot-example
+
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+server:
+  port: 8585
+
+  servlet:
+    context-path: /springmvc
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
