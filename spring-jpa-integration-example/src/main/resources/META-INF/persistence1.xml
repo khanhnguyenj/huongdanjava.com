@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_3_2.xsd"
+  version="3.2">
+
+  <persistence-unit name="springPU">
+    <class>com.huongdanjava.spring.Student</class>
+
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+    <properties>
+      <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/example"/>
+      <property name="jakarta.persistence.jdbc.user" value="root"/>
+      <property name="jakarta.persistence.jdbc.password" value="123456"/>
+    </properties>
+  </persistence-unit>
+</persistence>

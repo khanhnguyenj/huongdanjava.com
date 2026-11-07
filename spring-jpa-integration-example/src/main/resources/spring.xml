@@ -12,8 +12,9 @@
 
   <bean id="entityManagerFactory"
     class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <property name="packagesToScan" value="com.huongdanjava.spring"/>
     <property name="dataSource" ref="dataSource"/>
-    <property name="persistenceUnitName" value="springPU"/>
+<!--    <property name="persistenceUnitName" value="springPU"/>-->
     <property name="jpaVendorAdapter">
       <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
     </property>
