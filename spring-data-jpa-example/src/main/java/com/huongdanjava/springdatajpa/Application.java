@@ -5,12 +5,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Application {
 
-  public static void main(String[] args) {
+  static void main(String[] args) {
     ApplicationContext ac = new ClassPathXmlApplicationContext("spring.xml");
 
-    HelloRepository helloRepository = (HelloRepository) ac.getBean("helloRepository");
+    StudentRepository studentRepository = (StudentRepository) ac.getBean("studentRepository");
 
-    Student student = helloRepository.findByName("Phong");
+    Student student = studentRepository.findByName("Khanh Nguyen");
 
     System.out.println(student.getId());
   }

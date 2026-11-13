@@ -5,23 +5,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import java.io.Serializable;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@Table(name = "student")
+@Table(name = "students")
 @Entity
 @Getter
 @Setter
-public class Student implements Serializable {
+public class Student {
 
-  private static final long serialVersionUID = 1L;
+  @Id @GeneratedValue private Long id;
 
-  @Id
-  @GeneratedValue
-  private Long id;
-
-  @Column
-  private String name;
+  @Column private String name;
 }
