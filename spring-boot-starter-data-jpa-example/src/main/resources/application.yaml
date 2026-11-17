@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: spring-boot-starter-data-jpa-example
+
+  datasource:
+    url: jdbc:mysql://localhost:3307/example
+    username: root
+    password: 123456
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate.hibernate.format_sql: true
