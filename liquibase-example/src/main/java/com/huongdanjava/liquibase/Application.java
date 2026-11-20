@@ -13,17 +13,17 @@ import liquibase.resource.ClassLoaderResourceAccessor;
 
 public class Application {
 
-  public static void main(String[] args) throws SQLException, LiquibaseException {
-    Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5431/liquibase_example",
-        "khanh", "123456");
+  static void main(String[] args) throws SQLException, LiquibaseException {
+    Connection c =
+        DriverManager.getConnection(
+            "jdbc:postgresql://localhost:5431/liquibase_example", "khanh", "123456");
 
-    Database database = DatabaseFactory.getInstance()
-        .findCorrectDatabaseImplementation(new JdbcConnection(c));
+    Database database =
+        DatabaseFactory.getInstance().findCorrectDatabaseImplementation(new JdbcConnection(c));
 
-    Liquibase liquibase = new Liquibase("db-changelog.xml",
-        new ClassLoaderResourceAccessor(), database);
+    Liquibase liquibase =
+        new Liquibase("db-changelog.xml", new ClassLoaderResourceAccessor(), database);
 
     liquibase.update("main");
   }
-
 }
